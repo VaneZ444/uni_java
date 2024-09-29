@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        oneOneThree();
+        oneOneFour();
     }
     public static void oneOneOne(){
         Point[] points;
@@ -49,6 +49,19 @@ public class Main {
         journal[2].secondName = "Mayakovskyy";
         for (Name name : journal) {
             System.out.println(name.sayFullName());
+        }
+    }
+    public static void oneOneFour(){
+        Time[] timeTests;
+        timeTests = new Time[3];
+        timeTests[0] = new Time();
+        timeTests[1] = new Time();
+        timeTests[2] = new Time();
+        timeTests[0].time = 10;
+        timeTests[1].time = 10000;
+        timeTests[2].time = 100000;
+        for (Time time : timeTests) {
+            System.out.println(time.tellTime());
         }
     }
 }

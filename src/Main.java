@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        oneOneFour();
+        oneOneFive();
     }
     public static void oneOneOne(){
         Point[] points;
@@ -62,6 +62,19 @@ public class Main {
         timeTests[2].time = 100000;
         for (Time time : timeTests) {
             System.out.println(time.tellTime());
+        }
+    }
+    public static void oneOneFive(){
+        House[] houses;
+        houses = new House[3];
+        houses[0] = new House();
+        houses[1] = new House();
+        houses[2] = new House();
+        houses[0].height = 1;
+        houses[1].height = 5;
+        houses[2].height = 23;
+        for (House house : houses) {
+            System.out.println(house.houseInfo());
         }
     }
 }

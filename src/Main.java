@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        oneThreeTwo();
+        oneThreeThree();
     }
     public static void oneThreeOne() {
         Student Vasya = new Student("Vasiliy", new int[]{3, 4, 5});
@@ -34,5 +34,40 @@ public class Main {
         lineOne.linePoints[0].x = -10;
         System.out.println(lineTwo.lineReport());
         System.out.println(lineOne.lineReport());
+    }
+    public static void oneThreeThree() {
+        City[] web = new City[6];
+        char temp;
+        for (int i = 0; i < web.length; i++) {
+            temp = (char)('A' + i);
+            web[i] = new City(Character.toString(temp));
+            System.out.println(web[i].cityName);
+        }
+        web[0] = new City("A", new City[]{web[1],web[3],web[5]}, new int[]{5,6,1});
+        web[1] = new City("B", new City[]{web[0],web[2]}, new int[]{5,3});
+        web[2] = new City("C", new City[]{web[3],web[1]}, new int[]{4,3});
+        web[3] = new City("D", new City[]{web[0],web[4],web[2]}, new int[]{6,2,4});
+        web[4] = new City("E", new City[]{web[5]}, new int[]{2});
+        web[5] = new City("F", new City[]{web[1],web[4]}, new int[]{1,2});
+        for (int i = 0; i < web.length; i++) {
+            System.out.println(web[i].cityInfo());
+        }
+        /*City a, b, c, d, e, f;
+
+        a = new City("A");
+        b = new City("B");
+        c = new City("C");
+        d = new City("D");
+        e = new City("E");
+        f = new City("F");
+
+        a = new City("A", new City[]{b,d,f}, new int[]{5,6,1});
+        b = new City("B", new City[]{a,c}, new int[]{5,3});
+        c = new City("C", new City[]{d,b}, new int[]{4,3});
+        d = new City("D", new City[]{a,e,c}, new int[]{6,2,4});
+        e = new City("E", new City[]{f}, new int[]{2});
+        f = new City("F", new City[]{b,e}, new int[]{1,2});
+        */
+
     }
 }

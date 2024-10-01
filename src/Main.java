@@ -1,80 +1,81 @@
 public class Main {
     public static void main(String[] args) {
-        oneOneFive();
+        oneTwoFour();
     }
-    public static void oneOneOne(){
-        Point[] points;
-        points = new Point[3];
-        points[0] = new Point();
-        points[1] = new Point();
-        points[2] = new Point();
-        points[0].x = 2;
-        points[0].y = 5;
-        points[1].x = 23;
-        points[1].y = 54;
-        points[2].x = 27;
-        points[2].y = 57;
-        for (Point point : points) {
-            System.out.println(point.cords());
-        }
+    public static void oneTwoOne() {
+        //1
+        Line firstLine = new Line();
+        firstLine.a.x = 1;
+        firstLine.a.y = 3;
+        firstLine.b.x = 23;
+        firstLine.b.y = 8;
+        System.out.println("1 " + firstLine.lineInfo());
+        System.out.println(" ");
+        //2
+        Line secondLine = new Line();
+        secondLine.a.x = 5;
+        secondLine.a.y = 10;
+        secondLine.b.x = 25;
+        secondLine.b.y = secondLine.a.y;
+        System.out.println("2 " + secondLine.lineInfo());
+        System.out.println(" ");
+        //3
+        Line thirdLine = new Line();
+        thirdLine.a = firstLine.a;
+        thirdLine.b = secondLine.b;
+        System.out.println("3 " + thirdLine.lineInfo());
+        System.out.println(" ");
+        //4
+        firstLine.a.x = 2;
+        firstLine.a.y = 6;
+        firstLine.b.x = 46;
+        firstLine.b.y = 16;
+        secondLine.a.x = 10;
+        secondLine.a.y = 20;
+        secondLine.b.x = 50;
+        secondLine.b.y = secondLine.a.y;
+        System.out.println("1 " + firstLine.lineInfo());
+        System.out.println("2 " + secondLine.lineInfo());
+        System.out.println("3 " + thirdLine.lineInfo());
+        System.out.println(" ");
+        //5
+        firstLine.a = new Point();
+        firstLine.a.x = 42;
+        firstLine.a.y = 33;
+        System.out.println("1 " + firstLine.lineInfo());
+        System.out.println("3 " + thirdLine.lineInfo());
+    }
+    public static void oneTwoTwo() {
+        Human a = new Human(new Name("Cleopatra", null,null),152, null);
+        Human b = new Human(new Name("Aleksandr","Pushkin","Sergeevych"),167, null);
+        Human c = new Human(new Name("Aleksandr","Mayakovskiy", null),189, null);
 
+        System.out.println(a.introduce());
+        System.out.println(b.introduce());
+        System.out.println(c.introduce());
     }
-    public static void oneOneTwo(){
-        Human[] people;
-        people = new Human[3];
-        people[0] = new Human();
-        people[1] = new Human();
-        people[2] = new Human();
-        people[0].name = "Cleopatra";
-        people[0].height = 152;
-        people[1].name = "Pushkin";
-        people[1].height = 167;
-        people[2].name = "Volodymir";
-        people[2].height = 189;
-        for (Human human : people) {
-            System.out.println(human.introduce());
-        }
+    public static void oneTwoThree(){
+        Human a = new Human(new Name("Ivan", "Chudov", null), 170, null);
+        Human b = new Human(new Name("Pyotr", "Chudov", null), 172, null);
+        Human c = new Human(new Name("Boris", null, null), 174, null);
+        System.out.println(a.introduce());
+        System.out.println(b.introduce());
+        System.out.println(c.introduce());
+        System.out.println(" ");
+        b.father = a;
+        c.father = b;
+        System.out.println(a.introduce());
+        System.out.println(b.introduce());
+        System.out.println(c.introduce());
     }
-    public static void oneOneThree(){
-        Name[] journal;
-        journal = new Name[3];
-        journal[0] = new Name();
-        journal[1] = new Name();
-        journal[2] = new Name();
-        journal[0].firstName = "Cleopatra";
-        journal[1].firstName = "Pushkin";
-        journal[1].secondName = "Aleksandr";
-        journal[1].thirdName = "Sergeevych";
-        journal[2].firstName = "Volodymir";
-        journal[2].secondName = "Mayakovskyy";
-        for (Name name : journal) {
-            System.out.println(name.sayFullName());
-        }
-    }
-    public static void oneOneFour(){
-        Time[] timeTests;
-        timeTests = new Time[3];
-        timeTests[0] = new Time();
-        timeTests[1] = new Time();
-        timeTests[2] = new Time();
-        timeTests[0].time = 10;
-        timeTests[1].time = 10000;
-        timeTests[2].time = 100000;
-        for (Time time : timeTests) {
-            System.out.println(time.tellTime());
-        }
-    }
-    public static void oneOneFive(){
-        House[] houses;
-        houses = new House[3];
-        houses[0] = new House();
-        houses[1] = new House();
-        houses[2] = new House();
-        houses[0].height = 1;
-        houses[1].height = 5;
-        houses[2].height = 23;
-        for (House house : houses) {
-            System.out.println(house.houseInfo());
-        }
+    public static void oneTwoFour(){
+        Department IT = new Department("Information Technologies", null);
+        Employee a = new Employee("Petrov", IT);
+        Employee b = new Employee("Kozlov", IT);
+        Employee c = new Employee("Sidorov", IT);
+        IT.departmentBoss = b;
+        System.out.println(a.introduce());
+        System.out.println(b.introduce());
+        System.out.println(c.introduce());
     }
 }

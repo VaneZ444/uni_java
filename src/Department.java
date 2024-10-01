@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 
 public class Department {
     String departmentName;
@@ -19,7 +18,7 @@ public class Department {
     }
     public Employee getEmployeeByName(String name){
         for (int i = 0; i < empAmount; i++) {
-            if (employees[i].employeeName == name) {
+            if (employees[i].employeeName.equals(name)) {
                 return employees[i];
             }
         }
@@ -31,10 +30,8 @@ public class Department {
     public String tellCurrStaff(){
         String currStaffResponse = departmentName + " current employees : ";
         for (int i = 0; i < empAmount; i++) {
-            currStaffResponse = currStaffResponse + employees[i].employeeName;
-            if(i != empAmount -1){
-                currStaffResponse =currStaffResponse + ", ";
-            }
+            currStaffResponse += employees[i].employeeName;
+            if(i != empAmount -1) currStaffResponse = currStaffResponse + ", ";
         }
         return currStaffResponse;
     }

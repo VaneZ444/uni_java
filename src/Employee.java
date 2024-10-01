@@ -6,7 +6,6 @@ public class Employee {
         this.assignedDepartment = assignedDepartment;
     }
     public String introduce(){
-
         return employeeName + ", " + assignedDepartment.departmentName + " (boss : " + assignedDepartment.departmentBoss.employeeName + " )";
     }
 }

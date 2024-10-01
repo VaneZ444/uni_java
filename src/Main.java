@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        oneThreeThree();
+        oneThreeFour();
     }
     public static void oneThreeOne() {
         Student Vasya = new Student("Vasiliy", new int[]{3, 4, 5});
@@ -69,5 +69,22 @@ public class Main {
         f = new City("F", new City[]{b,e}, new int[]{1,2});
         */
 
+    }
+    public static void oneThreeFour() {
+        Department IT = new Department("Intellectual Technologies", 50);
+        IT.addEmployee(new Employee("Oleg", IT));
+        IT.addEmployee(new Employee("Pyotr", IT));
+        IT.addEmployee(new Employee("Cleopatra", IT));
+        IT.addEmployee(new Employee("Iosif", IT));
+
+        IT.addBoss(IT.getEmployeeByName("Iosif"));
+
+        IT.tellCurrStaff();
+        //еще можно вот так
+        Employee a = new Employee("Aleksey", IT);
+        IT.addEmployee(a);
+
+        System.out.println(IT.getEmployeeByName("Iosif").assignedDepartment.tellCurrStaff());
+        System.out.println(IT.departmentBoss.employeeName);
     }
 }

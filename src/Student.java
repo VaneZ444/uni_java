@@ -5,7 +5,8 @@ public class Student {
         this.studentName = studentName;
         this.marks = marks;
     }
-    public String report(){
+    @Override
+    public String toString(){
         String reportString = studentName + ": [";
         for (int i = 0; i < marks.length; i++) {
             reportString = reportString + marks[i];

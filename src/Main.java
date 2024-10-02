@@ -4,12 +4,12 @@ public class Main {
     }
     public static void oneThreeOne() {
         Student Vasya = new Student("Vasiliy", new int[]{3, 4, 5});
-        System.out.println(Vasya.report());
+        System.out.println(Vasya);
         Student Petya = new Student("Pyotr", Vasya.marks);
-        System.out.println(Petya.report());
+        System.out.println(Petya);
         Petya.marks[0] = 5;
-        System.out.println(Vasya.report());
-        System.out.println(Petya.report());
+        System.out.println(Vasya);
+        System.out.println(Petya);
         //оценка василия изменилась потому, что ссылки на оценки василия и петра ведут на один массив;
         System.out.println(Petya.marks);
         System.out.println(Vasya.marks);
@@ -18,22 +18,22 @@ public class Main {
         System.arraycopy(Vasya.marks,0,b,0,Vasya.marks.length);
         Student Andrew = new Student("Andrey", b);
         Andrew.marks[0] = 10;
-        System.out.println(Vasya.report());
-        System.out.println(Andrew.report());
+        System.out.println(Vasya);
+        System.out.println(Andrew);
     }
     public static void oneThreeTwo() {
         JaggedLine lineOne = new JaggedLine(new Point[]{new Point(1,5), new Point(2,8),new Point(5,3)});
-        System.out.println(lineOne.lineReport());
+        System.out.println(lineOne);
         //2
         JaggedLine lineTwo = new JaggedLine(new Point[]{
                 lineOne.linePoints[0],
                 new Point(2,-5),
                 new Point(4,-8),
                 lineOne.linePoints[lineOne.linePoints.length-1]});
-        System.out.println(lineTwo.lineReport());
+        System.out.println(lineTwo);
         lineOne.linePoints[0].x = -10;
-        System.out.println(lineTwo.lineReport());
-        System.out.println(lineOne.lineReport());
+        System.out.println(lineTwo);
+        System.out.println(lineOne);
     }
     public static void oneThreeThree() {
         City[] web = new City[6];
@@ -50,7 +50,7 @@ public class Main {
         web[4] = new City("E", new City[]{web[5]}, new int[]{2});
         web[5] = new City("F", new City[]{web[1],web[4]}, new int[]{1,2});
         for (int i = 0; i < web.length; i++) {
-            System.out.println(web[i].cityInfo());
+            System.out.println(web[i]);
         }
         /*City a, b, c, d, e, f;
 

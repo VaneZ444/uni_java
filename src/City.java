@@ -10,7 +10,8 @@ public class City {
     public City(String cityName){
         this(cityName, new City[0], new int[0]);
     }
-    public String cityInfo(){
+    @Override
+    public String toString(){
         String infoString = cityName + " roads: ";
         for (int i = 0; i < roadsTo.length; i++)
             infoString = infoString + "[ to " + roadsTo[i].cityName + " : " + roadPrices[i] + " ] ";

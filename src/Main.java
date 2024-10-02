@@ -79,7 +79,6 @@ public class Main {
 
         IT.addBoss(IT.getEmployeeByName("Iosif"));
 
-        IT.tellCurrStaff();
         //еще можно вот так
         Employee a = new Employee("Aleksey", IT);
         IT.addEmployee(a);

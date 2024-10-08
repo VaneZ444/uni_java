@@ -5,7 +5,8 @@ public class Employee {
         this.employeeName = employeeName;
         this.assignedDepartment = assignedDepartment;
     }
-    public String introduce(){
+    @Override
+    public String toString(){
         return employeeName + ", " + assignedDepartment.departmentName + " (boss : " + assignedDepartment.departmentBoss.employeeName + " )";
     }
 }

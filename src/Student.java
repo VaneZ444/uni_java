@@ -11,6 +11,12 @@ public class Student {
             markList.add(mark[i]);
         });
     }
+    public double round(){
+        return markList.stream().mapToDouble(d -> d).average().orElse(0.0);
+    }
+    public boolean isIdeal(){
+        return (round() == 5.0);
+    }
     @Override
     public String toString() {
         return "Student{" +

@@ -6,15 +6,16 @@ public class Time {
     public Time(int time){
         this.time = time;
     }
+    public int whatHour(){
+        return time/3600;
+    }
+    public int whatMinute(){
+        return (time-whatHour()*3600)/60;
+    }
+    public int whatSecond(){
+        return time-whatHour()*3600-whatMinute()*60;
+    }
     public String toString(){
-        int fullSeconds, hours, minutes, seconds;
-        fullSeconds = time;
-        while (fullSeconds > 86400){
-            fullSeconds-=86400;
-        }
-        hours = fullSeconds/3600;
-        minutes = (fullSeconds - hours*3600)/60;
-        seconds = (fullSeconds - hours*3600 - minutes*60);
-        return hours + " : " + minutes + " : " + seconds;
+        return whatHour()+" : "+whatMinute()+" : "+whatSecond();
     }
 }

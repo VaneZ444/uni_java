@@ -1,19 +1,21 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.IntStream;
+
 public class Student {
     String studentName;
-    int[] marks;
-    public Student(String studentName, int[] marks){
+    List<Integer> markList = new ArrayList<>();
+    public Student(String studentName, int... mark){
         this.studentName = studentName;
-        this.marks = marks;
+        IntStream.range(0, mark.length).forEach(i -> {
+            markList.add(mark[i]);
+        });
     }
-    public String report(){
-        String reportString = studentName + ": [";
-        for (int i = 0; i < marks.length; i++) {
-            reportString = reportString + marks[i];
-            if (i != marks.length - 1){
-                reportString = reportString + ", ";
-            }
-        }
-        reportString = reportString + "]";
-        return reportString;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentName='" + studentName + '\'' +
+                ", marks=" + markList +
+                '}';
     }
 }

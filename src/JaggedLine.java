@@ -1,17 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class JaggedLine {
-    Point[] linePoints;
-    public JaggedLine(Point[] linePoints){
-        this.linePoints = linePoints;
-    }
-    public String lineReport(){
-        String reportString = "Jagged line [";
-        for (int i = 0; i < linePoints.length; i++) {
-            reportString = reportString + linePoints[i].cords();
-            if (i != linePoints.length - 1){
-                reportString = reportString + ", ";
-            }
-        }
-        reportString = reportString + "]";
-        return reportString;
+    List<Point> linePoints = new ArrayList<>();
+    public JaggedLine(Point... points){
+        linePoints.addAll(List.of(points));
     }
 }

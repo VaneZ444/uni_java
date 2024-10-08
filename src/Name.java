@@ -7,6 +7,12 @@ public class Name {
         this.secondName = secondName;
         this.thirdName = thirdName;
     }
+    public Name(String firstName){
+        this(firstName, null);
+    }
+    public Name(String firstName, String secondName){
+        this(firstName,secondName,null);
+    }
     public String sayFullName(){
         String fullName = "";
         if (firstName != null){

@@ -1,19 +1,22 @@
+import java.util.List;
+import java.util.ArrayList;
+
 public class City {
     String cityName;
-    City[] roadsTo;
-    int[] roadPrices;
-    public City(String cityName, City[] roadsTo, int[] roadPrices){
+    List<Road> roadList = new ArrayList<>();
+    public City(String cityName, Road... roads){
         this.cityName = cityName;
-        this.roadsTo = roadsTo;
-        this.roadPrices = roadPrices;
+        roadList.addAll(List.of(roads));
     }
     public City(String cityName){
-        this(cityName, new City[0], new int[0]);
+        this.cityName = cityName;
     }
-    public String cityInfo(){
-        String infoString = cityName + " roads: ";
-        for (int i = 0; i < roadsTo.length; i++)
-            infoString = infoString + "[ to " + roadsTo[i].cityName + " : " + roadPrices[i] + " ] ";
-        return infoString;
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "cityName='" + cityName + '\'' +
+                ", roadList=" + roadList +
+                '}';
     }
 }

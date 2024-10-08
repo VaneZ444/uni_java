@@ -5,7 +5,8 @@ public class Point {
         this.x = x;
         this.y = y;
     }
-    public String cords(){
+    @Override
+    public String toString(){
         return "{" + x + ";" + y + "}";
     }
 }

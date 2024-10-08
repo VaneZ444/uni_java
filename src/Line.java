@@ -9,6 +9,6 @@ public class Line {
         this(new Point(aX,aY),new Point(bX,bY));
     }
     public String lineInfo(){
-        return "Line from " + a.cords() + " to " + b.cords();
+        return "Line from " + a + " to " + b;
     }
 }

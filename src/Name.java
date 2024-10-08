@@ -13,7 +13,8 @@ public class Name {
     public Name(String firstName, String secondName){
         this(firstName,secondName,null);
     }
-    public String sayFullName(){
+    @Override
+    public String toString(){
         String fullName = "";
         if (firstName != null){
             fullName = fullName + " " + firstName;

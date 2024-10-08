@@ -7,9 +7,12 @@ public class Human {
         this.humanName = humanName;
         this.height = height;
         this.humanFather = humanFather;
-        if (this.humanName.thirdName == null){this.humanName.thirdName = this.humanFather.humanName.thirdName;}
-        if (this.humanName.secondName == null){this.humanName.secondName = this.humanFather.humanName.secondName;}
+        if(this.humanFather != null){
+            if ((this.humanName.thirdName == null)&&(this.humanFather.humanName.thirdName != null)){this.humanName.thirdName = this.humanFather.humanName.thirdName;}
+            if ((this.humanName.secondName == null)&&(this.humanFather.humanName.secondName != null)){this.humanName.secondName = this.humanFather.humanName.secondName;}
+        }
     }
+
     public Human(Name humanName, int height){
         this(humanName, height,null);
     }

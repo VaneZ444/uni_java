@@ -26,6 +26,7 @@ public class Department {
         //на случай если нужно найти кого то в любом случае
         //int randEmployeeIndex = (int) (Math.random() * empAmount);
         //return employees[randEmployeeIndex];
+    }
     @Override
     public String toString(){
         String currStaffResponse = departmentName + " current employees : ";

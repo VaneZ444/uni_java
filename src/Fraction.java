@@ -1,7 +1,8 @@
-public class Fraction {
-    int num;
-    int den;
-    public Fraction(int num,int den){
+public record Fraction(int num, int den) {
+    public Fraction(int num, int den){
+        if(den <= 0){
+            throw new IllegalArgumentException("Denuminator cannot be negative or zero");
+        }
         int a = num;
         int b = den;
         int limit = Math.min(a,b);
@@ -27,16 +28,16 @@ public class Fraction {
         return new Fraction(this.num * second.den, this.num * second.den);
     }
     public Fraction sum(int num){
-        return new Fraction(this.num + num*this.den, this.den);
+        return this.sum(new Fraction(num,1));
     }
     public Fraction sub(int num) {
-        return new Fraction(this.num - num*this.den, this.den);
+        return this.sub(new Fraction(num,1));
     }
     public Fraction mul(int num){
-        return new Fraction(this.num * num, this.den);
+        return this.mul(new Fraction(num,1));
     }
     public Fraction div(int num){
-        return new Fraction(this.num, this.num * num);
+        return this.div(new Fraction(num,1));
     }
     @Override
     public String toString() {

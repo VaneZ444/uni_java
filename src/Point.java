@@ -6,8 +6,7 @@ public class Point {
         this.y = y;
     }
     public Point(Point cloned){
-        this.x = cloned.x;
-        this.y = cloned.y;
+        this(cloned.x,cloned.y);
     }
     @Override
     public String toString(){

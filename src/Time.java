@@ -7,13 +7,13 @@ public class Time {
         this.time = time;
     }
     public int whatHour(){
-        return time/3600;
+        return (time%(24*3600))/3600;
     }
     public int whatMinute(){
-        return (time-whatHour()*3600)/60;
+        return ((time%(24*3600))-whatHour()*3600)/60;
     }
     public int whatSecond(){
-        return time-whatHour()*3600-whatMinute()*60;
+        return (time%(24*3600))-whatHour()*3600-whatMinute()*60;
     }
     public String toString(){
         return whatHour()+" : "+whatMinute()+" : "+whatSecond();

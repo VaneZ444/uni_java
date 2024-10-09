@@ -8,8 +8,8 @@ public class Human {
         this.height = height;
         this.humanFather = humanFather;
         if(this.humanFather != null){
-            if ((this.humanName.thirdName == null)&&(this.humanFather.humanName.thirdName != null)){this.humanName.thirdName = this.humanFather.humanName.thirdName;}
-            if ((this.humanName.secondName == null)&&(this.humanFather.humanName.secondName != null)){this.humanName.secondName = this.humanFather.humanName.secondName;}
+            if ((this.humanName.getThirdName() == null)&&(this.humanFather.humanName.getThirdName() != null)){this.humanName.setThirdName(this.humanFather.humanName.getThirdName());}
+            if ((this.humanName.getSecondName() == null)&&(this.humanFather.humanName.getSecondName() != null)){this.humanName.setSecondName(this.humanFather.humanName.getSecondName());}
         }
     }
 

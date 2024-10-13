@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        oneSixEight();
+        oneSixNine();
     }
     public static void oneSixOne(){
         House a = new House(-4);
@@ -38,5 +38,9 @@ public class Main {
     public static void oneSixEight(){
         Human a = new Human("iven", 500,null);
         System.out.println(a.getName());
+    }
+    public static void oneSixNine(){
+        Student a = new Student("ueee", 2,3,4,2,3);
+        System.out.println(a.getMarks());
     }
 }

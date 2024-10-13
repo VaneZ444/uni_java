@@ -1,22 +1,53 @@
 public class Name {
-    final String firstName;
-    final String secondName;
-    final String thirdName;
+    private String firstName;
+    private String secondName;
+    private String thirdName;
 
-    public Name(String firstName, String secondName, String thirdName){
-        if(firstName.isBlank() || secondName.isBlank() || thirdName.isBlank()){
-            throw new IllegalArgumentException("At least one nameField should not be empty");
+    public Name(String fName, String sName, String tName) {
+        if (isNullName(fName, sName, tName)) {
+            throw new IllegalArgumentException("At least one name should not be empty");
         }
-        setFirstName(firstName);
-        setSecondName(secondName);
-        setThirdName(thirdName);
+        setFirstName(fName);
+        setSecondName(sName);
+        setThirdName(tName);
     }
-    public Name(String firstName){
+
+    public Name(String firstName, String secondName) {
+        this(firstName, secondName, null);
+    }
+
+    public Name(String firstName) {
         this(firstName, null);
     }
-    public Name(String firstName, String secondName){
-        this(firstName,secondName,null);
+
+    public Name(Name name) {
+        firstName = name.firstName;
+        secondName = name.secondName;
+        thirdName = name.thirdName;
     }
+
+
+    private boolean isNullName(String fName, String sName, String tName) {
+        return !(
+                !((fName == null) || fName.isEmpty()) ||
+                        !((sName == null) || sName.isEmpty()) ||
+                        !((tName == null) || tName.isEmpty())
+        );
+    }
+
+
+    private void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    private void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    private void setThirdName(String thirdName) {
+        this.thirdName = thirdName;
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -30,28 +61,16 @@ public class Name {
         return thirdName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public void setThirdName(String thirdName) {
-        this.thirdName = thirdName;
-    }
-
     @Override
-    public String toString(){
+    public String toString() {
         String fullName = "";
-        if (firstName != null){
+        if (firstName != null) {
             fullName = fullName + " " + firstName;
         }
-        if (thirdName != null){
+        if (thirdName != null) {
             fullName = fullName + " " + thirdName;
         }
-        if (secondName != null){
+        if (secondName != null) {
             fullName = fullName + " " + secondName;
         }
         return fullName;

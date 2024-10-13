@@ -1,26 +1,76 @@
 public class Human {
-    Name humanName;
-    int height;
-    Human humanFather;
+    private final Name humanName;
+    private int height;
+    private final Human humanFather;
 
-    public Human(Name humanName, int height, Human humanFather){
-        this.humanName = humanName;
-        this.height = height;
+    public Human(Name humanName, int height, Human humanFather) {
+        this.humanName = constructName(humanName, humanFather);
         this.humanFather = humanFather;
-        if(this.humanFather != null){
-            if ((this.humanName.getThirdName() == null)&&(this.humanFather.humanName.getThirdName() != null)){this.humanName.setThirdName(this.humanFather.humanName.getThirdName());}
-            if ((this.humanName.getSecondName() == null)&&(this.humanFather.humanName.getSecondName() != null)){this.humanName.setSecondName(this.humanFather.humanName.getSecondName());}
-        }
+        setHeight(height);
     }
 
-    public Human(Name humanName, int height){
-        this(humanName, height,null);
+    public Human(Name humanName, int height) {
+        this(humanName, height, null);
     }
-    public Human(String firstNameString, int height){
+
+    public Human(String firstNameString, int height) {
         this(new Name(firstNameString), height);
     }
-    public Human(String firstNameString, int height, Human humanFather){
+
+    public Human(String firstNameString, int height, Human humanFather) {
         this(new Name(firstNameString), height, humanFather);
+    }
+
+    private boolean isValidHeight(int h) {
+        return (h <= 500) && (h >= 0);
+    }
+
+    private Name constructName(Name humanName, Human humanFather) {
+
+        String tempFirst = humanName.getFirstName();
+        String tempSecond = humanName.getSecondName();
+        String tempThird = humanName.getThirdName();
+
+        String tempSecondF = "";
+        String tempThirdF = "";
+
+        if(humanFather != null) {
+            Name fatherName = humanFather.getName();
+            tempSecondF = fatherName.getSecondName();
+            tempThirdF = fatherName.getThirdName();
+        }
+
+        if (((tempSecond == null) || tempSecond.isEmpty())) {
+            if (!((tempSecondF == null) || tempSecondF.isEmpty())) {
+                tempSecond = tempSecondF;
+            }
+        }
+        if (((tempThird == null) || tempThird.isEmpty())) {
+            if (!((tempThirdF == null) || tempThirdF.isEmpty())) {
+                tempThird = tempThirdF;
+            }
+        }
+
+        return new Name(tempFirst, tempSecond, tempThird);
+    }
+
+    public void setHeight(int height) {
+        if (!isValidHeight(height)) {
+            throw new IllegalArgumentException("Height value should be between 0 and 500");
+        }
+        this.height = height;
+    }
+
+    public Human getFather() {
+        return humanFather;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public Name getName() {
+        return new Name(humanName);
     }
 
     @Override

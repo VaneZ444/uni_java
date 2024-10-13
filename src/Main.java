@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        oneSixSix();
+        oneSixEight();
     }
     public static void oneSixOne(){
         House a = new House(-4);
@@ -35,7 +35,8 @@ public class Main {
         System.out.println(c.getA().hashCode());
         System.out.println(d.getA().hashCode());
     }
-    public static void oneSixSeven(){
-
+    public static void oneSixEight(){
+        Human a = new Human("iven", 500,null);
+        System.out.println(a.getName());
     }
 }

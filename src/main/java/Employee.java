@@ -1,12 +1,9 @@
-public class Employee {
-    String employeeName;
-    Department assignedDepartment;
-    public Employee(String employeeName, Department assignedDepartment){
-        this.employeeName = employeeName;
-        this.assignedDepartment = assignedDepartment;
+public class Employee extends Worker {
+    public Employee(String name, Department depo) {
+        super(name, depo);
     }
-    @Override
-    public String toString(){
-        return employeeName + ", " + assignedDepartment.departmentName + " (boss : " + assignedDepartment.departmentBoss.employeeName + " )";
+
+    public Employee(Boss boss) {
+        super(boss.getName(), boss.getDepo());
     }
 }

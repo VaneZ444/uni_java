@@ -7,7 +7,8 @@ public class Road {
         this.roadTo = roadTo;
         this.length = roadCost;
     }
-    public boolean isEqualRoad(Road r){
+    @Override
+    public boolean equals(Road r){
         return (this.roadTo.equals(r.roadTo)&&this.roadFrom.equals(r.roadFrom));
     }
     @Override

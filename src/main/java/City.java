@@ -12,42 +12,26 @@ public class City {
 
     public City(String cityName, Road... roads) {
         this.cityName = cityName;
-        appendRoad(roads);
+        putRoad(roads);
     }
 
-    public void appendRoad(Road... roads) {
+    public void putRoad(Road... roads) {
         for (Road r : roads) {
-            if (isRoadValid(r)) {
-                this.roadList.add(r);
-            } else {
-                throw new IllegalArgumentException("invalid road");
-            }
-        }
-    }
-    public void deleteRoad(Road... roadToDel){
-        for(Road rd: roadToDel){
-            for(Road r: this.roadList){
-                if(r.isEqualRoad(rd)){
-                    this.roadList.remove(r);
+            for(Road rl: roadList) {
+                if (r.getCity() == rl.getCity()) {
+                    rl.setLength(r.getLength());
                 } else {
-                    throw new IllegalArgumentException("all roads chosen for deletion should exist");
+                    this.roadList.add(r);
                 }
             }
         }
     }
-    public void deleteRoad(City roadFrom, City roadTo){
-        deleteRoad(new Road(roadFrom,roadTo,1));
-    }
-    private boolean isRoadValid(Road road) {
-        if (road.getRoadFrom() != this)
-            throw new IllegalArgumentException("doesnt eq:" + road.getRoadFrom() + " " + this);
-            //return false;
-        for (Road r : roadList) {
-            if (road.isEqualRoad(r)) {
-                return false;
-            }
-            ;
+    public void deleteRoad(Road... roadsToDel){
+        for (Road rd : roadsToDel) {
+            roadList.removeIf(rl -> rd.getCity() == rl.getCity());
         }
-        return true;
+    }
+    public void deleteRoad(City roadFrom){
+        deleteRoad(new Road(roadFrom,1));
     }
 }

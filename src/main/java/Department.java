@@ -10,52 +10,43 @@ import java.util.List;
 @Setter
 public class Department {
     private String departmentName;
-    private Boss boss;
-    private List<Worker> workers = new ArrayList<>();
+    private Employee boss;
+    private List<Employee> employees = new ArrayList<>();
 
-    public Department(String departmentName, Employee boss, Worker... workers) {
+    public Department(String departmentName, Employee boss, Employee... employees) {
         this.departmentName = departmentName;
         addBoss(boss);
-        addEmployee(workers);
+        addEmployee(employees);
     }
 
-    public void addEmployee(Worker... newMembers) {
-        for (Worker n : newMembers) {
-            if (this.workers.contains(n))
-                throw new IllegalArgumentException("worker " + n + "is already in department");
-            this.workers.add(n);
-            n.setDepo(this);
+    public void addEmployee(Employee... employees) {
+        for (Employee emp : employees) {
+            if (emp == null) continue;
+            if (this.employees.contains(emp) && emp.getDep() == this) continue;
+            if (emp.getDep()!=this) emp.setDep(this);
+            if (!this.employees.contains(emp)) this.employees.add(emp);
+            emp.setDep(this);
         }
     }
 
     public void addBoss(Employee employee) {
-        if (this.boss != null) {
-            throw new RuntimeException("You must remove previous boss before adding next one");
-        }
-        employee.getDepo().removeEmployee(employee);
-        Boss boss = new Boss(employee);
-        addEmployee(new Boss(employee));
-        this.boss = boss;
-        this.boss.setDepoInPower(this);
+        employee.getDep().removeEmployee(employee);
+        addEmployee(employee);
+        this.boss = employee;
     }
 
-    public void removeBoss(Boss boss) {
-        if (this.boss == null) {
-            throw new RuntimeException("You must have a boss if you want to remove him");
-        }
-        this.boss.setDepoInPower(null);
-        boss.getDepo().removeEmployee(boss);
-        addEmployee(new Employee(boss));
+    public void removeBoss() {
+        this.removeEmployee(boss);
         this.boss = null;
     }
 
     public void removeEmployee(Employee employee) {
-        this.workers.remove(employee);
-        employee.setDepo(null);
+        this.employees.remove(employee);
+        employee.remDep();
     }
 
-    public Worker getWorkerByName(String name) {
-        for (Worker i : workers) {
+    public Employee getEmployeeByName(String name) {
+        for (Employee i : employees) {
             if (i.getName().equals(name)) {
                 return i;
             }

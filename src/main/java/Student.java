@@ -3,21 +3,23 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class Student {
-    String studentName;
+    private String studentName;
     private List<Integer> markList = new ArrayList<>();
-    public Student(String studentName, int... mark){
+    public Student(String studentName, Integer... marks){
         this.studentName = studentName;
-        IntStream.range(0, mark.length).forEach(i -> {
-            if (mark[i]>1 &&mark[i]<6) {
-                markList.add(mark[i]);
+        addMarks(marks);
+    }
+    public ArrayList<Integer> getMarks(){
+        return new ArrayList<Integer>(this.markList);
+    }
+    public void addMarks(Integer... marks){
+        IntStream.range(0, marks.length).forEach(i -> {
+            if (marks[i]>1 &&marks[i]<6) {
+                markList.add(marks[i]);
             } else {
                 throw new IllegalArgumentException("All mark values should be between 2 and 5");
             }
         });
-    }
-    public int[] getMarks(){
-        int[] a = markList.stream().mapToInt(i -> i).toArray();
-        return a;
     }
     public double round(){
         return markList.stream().mapToDouble(d -> d).average().orElse(0.0);

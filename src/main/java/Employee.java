@@ -1,4 +1,6 @@
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 @Getter
 public class Employee{
     private final String name;
@@ -6,6 +8,9 @@ public class Employee{
     public Employee(String name, Department dep){
         this.name = name;
         setDep(dep);
+    }
+    public Employee(String name){
+        this(name,null);
     }
     public void setDep(Department dep) {
         if(this.dep == dep) return;
@@ -15,5 +20,11 @@ public class Employee{
     }
     public void remDep(){
         this.dep = null;
+    }
+
+    @Override
+    public String toString() {
+        if(dep == null) return name+" no dep";
+        return getName() + " " + dep.getDepartmentName();
     }
 }

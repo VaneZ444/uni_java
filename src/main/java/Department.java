@@ -1,3 +1,4 @@
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,11 +16,18 @@ public class Department {
 
     public Department(String departmentName, Employee boss, Employee... employees) {
         this.departmentName = departmentName;
-        addBoss(boss);
+        if(boss != null) addBoss(boss);
         addEmployee(employees);
+    }
+    public Department(String departmentName){
+        this(departmentName,null);
+    }
+    public Department(String departmentName, Employee... employees){
+        this(departmentName,null,employees);
     }
 
     public void addEmployee(Employee... employees) {
+        if (employees == null) return;
         for (Employee emp : employees) {
             if (emp == null) continue;
             if (this.employees.contains(emp) && emp.getDep() == this) continue;
@@ -36,12 +44,19 @@ public class Department {
     }
 
     public void removeBoss() {
-        this.removeEmployee(boss);
         this.boss.remDep();
+        employees.remove(boss);
         this.boss = null;
     }
 
     public void removeEmployee(Employee employee) {
+        if(employee == null) return;
+        if(employee.getDep() != this && employees.contains(employee)) return;
+        if(this.boss == employee){
+            removeBoss();
+            removeEmployee(boss);
+            return;
+        }
         this.employees.remove(employee);
         employee.remDep();
     }

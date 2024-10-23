@@ -1,20 +1,19 @@
-public class Pistol{
-    public final int maxCap;
-    private int currCap;
+import lombok.Setter;
 
-    public Pistol(int maxCap, int currCap){
+public class Gun {
+    protected final int maxCap;
+    @Setter
+    protected int currCap;
+
+    public Gun(int maxCap, int currCap){
         this.maxCap = maxCap;
         setCurrCap(currCap);
     }
-    public Pistol(int maxCap){
+    public Gun(int maxCap){
         this(maxCap,maxCap);
     }
     public int getCurrCap() {
         return currCap;
-    }
-
-    public void setCurrCap(int currCap) {
-        this.currCap = currCap;
     }
 
     public int getMaxCap() {
@@ -49,6 +48,9 @@ public class Pistol{
         StringBuilder shootStr = new StringBuilder();
         for (int i = 0; i < shots; i++) {
             shootStr.append(shoot());
+            if(shootStr.equals("click ")){
+                return shootStr.toString();
+            }
         }
         return shootStr.toString();
     }

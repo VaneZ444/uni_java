@@ -37,6 +37,7 @@ public class Department {
 
     public void removeBoss() {
         this.removeEmployee(boss);
+        this.boss.remDep();
         this.boss = null;
     }
 

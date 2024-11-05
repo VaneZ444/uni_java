@@ -1,4 +1,4 @@
-public class AutoRifle extends Gun{
+public class AutoRifle extends Pistol{
      private int RoundsPerSecond;
 
      public AutoRifle(int maxCap, int RoundsPerSecond) {
@@ -11,10 +11,10 @@ public class AutoRifle extends Gun{
      public AutoRifle(){
           this(30,30);
      }
-     public String shoot(){
-          return super.shoot(RoundsPerSecond);
+     public String shootStr(){
+          return super.shootStr(RoundsPerSecond);
      }
-     public String shootContiniously(int seconds){
-          return super.shoot(RoundsPerSecond*seconds);
+     public String shootStrContiniously(int seconds){
+          return super.shootStr(RoundsPerSecond*seconds);
      }
 }

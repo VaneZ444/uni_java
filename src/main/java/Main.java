@@ -1,10 +1,15 @@
+import mathematical.Circle;
+import mathematical.Square;
+import mathematical.Triangle;
+
 public class Main {
     public static void main(String[] args) {
-        Parrot kel = new Parrot("Kell", "All work and no play makes jack a dull boy");
-        Sparrow jack = new Sparrow("Jack");
-        Cuckoo intruder = new Cuckoo("Aubrey");
-        System.out.println(kel);
-        System.out.println(jack);
-        System.out.println(intruder);
+        Square first = new Square(4,5, 10);
+        System.out.println(first.square());
+        Circle second = new Circle(4,5,3);
+        System.out.println(second);
+        Triangle third = new Triangle(3,4,6,2,23,5);
+        System.out.println(third);
+        System.out.println(third.square());
     }
 }

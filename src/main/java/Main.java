@@ -1,15 +1,15 @@
+import funkyDot2.FunkyDot;
 import mathematical.Circle;
 import mathematical.Square;
 import mathematical.Triangle;
+import misc.Time;
 
 public class Main {
     public static void main(String[] args) {
-        Square first = new Square(4,5, 10);
-        System.out.println(first.square());
-        Circle second = new Circle(4,5,3);
-        System.out.println(second);
-        Triangle third = new Triangle(3,4,6,2,23,5);
-        System.out.println(third);
-        System.out.println(third.square());
+        FunkyDot test = new FunkyDot.Builder().addZ(0).addX(0).addY(6).build();
+        FunkyDot test2 = new FunkyDot.Builder().addZ(6).addTimestamp(new Time(1337)).addColor("green").build();
+        System.out.println(test);
+        System.out.println(test2);
+
     }
 }

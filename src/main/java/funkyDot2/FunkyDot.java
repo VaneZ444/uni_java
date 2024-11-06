@@ -1,9 +1,7 @@
 package funkyDot2;
 
-import lombok.Getter;
 import misc.Time;
 
-@Getter
 public class FunkyDot{
     private Integer x = null;
     private Integer y = null;
@@ -54,6 +52,33 @@ public class FunkyDot{
         this.z = builder.z;
         this.timestamp = builder.timestamp;
         this.color = builder.color;
+    }
+
+    public Integer getX() {
+        if(x!=null)return (int)x;
+        return 0;
+    }
+
+    public Integer getY() {
+        if(y!=null)return (int)y;
+        return 0;
+    }
+
+    public Integer getZ() {
+        if(z!=null)return (int)z;
+        return 0;
+    }
+
+    public Time getTimestamp() {
+        if (timestamp!=null) return new Time(timestamp.getInt());
+        return null;
+    }
+
+    public String getColor() {
+        if (color != null) {
+            return new String(color);
+        }
+        return null;
     }
 
     @Override

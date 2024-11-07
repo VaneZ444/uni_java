@@ -2,8 +2,10 @@ package mathematical;
 
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @Getter
-public final class Fraction {
+public final class Fraction implements Serializable {
     private final int num;
     private final int den;
 
@@ -88,4 +90,5 @@ public final class Fraction {
     public String toString() {
         return num + "/" + den;
     }
+
 }

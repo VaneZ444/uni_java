@@ -1,6 +1,8 @@
 package mathematical;
 
-public class Square extends Figure {
+import interfaces.PolyChainable;
+
+public class Square extends Figure implements PolyChainable {
     private int squareLength;
 
     public Square(Point corner, int squareLength) {
@@ -28,12 +30,12 @@ public class Square extends Figure {
         return this.squareLength;
     }
 
-    public JaggedLine toJagged() {
-        return new JaggedLine(new Point(super.a),
+    public PolygonalChain toJagged() {
+        return new PolygonalRing(
+                new Point(super.a),
                 new Point(super.a.x + getSide(), super.a.y),
                 new Point(super.a.x + getSide(), super.a.y + getSide()),
-                new Point(super.a.x, super.a.y + getSide()),
-                new Point(super.a)
+                new Point(super.a.x, super.a.y + getSide())
         );
     }
 
@@ -43,4 +45,8 @@ public class Square extends Figure {
                 "with side " + getSide();
     }
 
+    @Override
+    public PolygonalChain getPolygonalChain() {
+        return toJagged();
+    }
 }

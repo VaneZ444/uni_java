@@ -11,6 +11,17 @@ public class Rectangle extends Figure{
         this.len = len;
         this.len2 = len2;
     }
+    public Rectangle(int x, int y, int len, int len2) {
+        this(new Point(2,3),3,7);
+    }
+    public PolygonalChain toJagged() {
+        return new PolygonalRing(
+                new Point(super.a),
+                new Point(super.a.x + len, super.a.y),
+                new Point(super.a.x + len, super.a.y + len2),
+                new Point(super.a.x, super.a.y + len2)
+        );
+    }
 
     @Override
     public double square() {

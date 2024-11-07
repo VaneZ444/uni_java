@@ -1,6 +1,4 @@
-package funkyDot2;
-
-import misc.Time;
+package misc;
 
 public class FunkyDot{
     private Integer x = null;

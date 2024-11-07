@@ -1,16 +1,21 @@
 package mathematical;
 
-public class Line {
+import interfaces.Measurable;
+import interfaces.PolyChainable;
+
+import java.util.List;
+
+public class Line implements Measurable, PolyChainable {
     private Point a;
     private Point b;
 
-    public Line(Point a, Point b){
+    public Line(Point a, Point b) {
         this.a = new Point(a);
         this.b = new Point(b);
     }
 
-    public Line(int aX, int aY, int bX, int bY){
-        this(new Point(aX,aY),new Point(bX,bY));
+    public Line(int aX, int aY, int bX, int bY) {
+        this(new Point(aX, aY), new Point(bX, bY));
     }
 
     public void setA(Point a) {
@@ -29,11 +34,17 @@ public class Line {
         return b;
     }
 
-    public double len(){
-        return Math.sqrt((getA().x)*(getB().x)+(getA().y)*(getB().y));
+    public float len() {
+        return (float) Math.sqrt((getA().x) * (getB().x) + (getA().y) * (getB().y));
     }
+
     @Override
-    public String toString(){
+    public PolygonalChain getPolygonalChain() {
+        return new PolygonalChain(List.of(new Point(a), new Point(b)));
+    }
+
+    @Override
+    public String toString() {
         return "mathematical.Line from " + getA() + " to " + getB();
     }
 }

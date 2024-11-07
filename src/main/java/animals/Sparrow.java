@@ -5,6 +5,6 @@ public class Sparrow extends Bird {
         super(name);
     }
     public String sing() {
-        return " чырык";
+        return " chirrup";
     }
 }

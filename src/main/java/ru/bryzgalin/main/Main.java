@@ -1,10 +1,15 @@
 package ru.bryzgalin.main;
 
-import ru.bryzgalin.mathematical.*;
-import ru.bryzgalin.animals.*;
-import ru.bryzgalin.interfaces.*;
-import ru.bryzgalin.misc.*;
-import ru.bryzgalin.exceptions.*;
+import ru.bryzgalin.animals.Bird;
+import ru.bryzgalin.exceptions.IllegalMarkException;
+import ru.bryzgalin.interfaces.Lenghtable;
+import ru.bryzgalin.interfaces.Meowable;
+import ru.bryzgalin.interfaces.PolyChainable;
+import ru.bryzgalin.mathematical.Figure;
+import ru.bryzgalin.mathematical.Fraction;
+import ru.bryzgalin.mathematical.Point;
+import ru.bryzgalin.mathematical.PolygonalChain;
+import ru.bryzgalin.misc.Student;
 
 import java.math.*;
 import java.util.ArrayList;
@@ -25,10 +30,10 @@ public class Main {
     //--//
 
     public static double packageSum() {
-        return summarize(7, new Fraction(11,3),3.21,new BigInteger("12345678912345678912"));
+        return summarize(7, new Fraction(11,3),3.21, new BigInteger("12345678912345678912"));
     }
-    public static int powXY(String x, String y){
-        return (int) pow(parseInt(x), parseInt(y));
+    public static double powXY(String x, String y){
+        return pow(parseInt(x),parseInt(y));
     }
 
     //--//

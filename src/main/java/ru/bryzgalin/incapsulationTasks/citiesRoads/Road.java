@@ -1,4 +1,4 @@
-package ru.bryzgalin.incapsulationTasks.accsTransactions.citiesRoads;
+package ru.bryzgalin.incapsulationTasks.citiesRoads;
 
 import lombok.Getter;
 import lombok.Setter;

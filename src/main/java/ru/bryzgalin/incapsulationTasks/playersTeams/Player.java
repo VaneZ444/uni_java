@@ -1,4 +1,4 @@
-package ru.bryzgalin.incapsulationTasks.accsTransactions.playersTeams;
+package ru.bryzgalin.incapsulationTasks.playersTeams;
 
 import lombok.Getter;
 import lombok.Setter;

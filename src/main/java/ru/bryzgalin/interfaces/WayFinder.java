@@ -1,6 +1,6 @@
 package ru.bryzgalin.interfaces;
 
-import ru.bryzgalin.incapsulationTasks.accsTransactions.citiesRoads.City;
+import ru.bryzgalin.incapsulationTasks.citiesRoads.City;
 
 import java.util.List;
 public interface WayFinder {

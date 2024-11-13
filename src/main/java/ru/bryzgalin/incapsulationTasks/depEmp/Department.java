@@ -1,4 +1,4 @@
-package ru.bryzgalin.incapsulationTasks.accsTransactions.depEmp;
+package ru.bryzgalin.incapsulationTasks.depEmp;
 
 import lombok.Getter;
 import lombok.Setter;

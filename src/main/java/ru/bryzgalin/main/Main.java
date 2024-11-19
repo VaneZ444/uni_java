@@ -2,9 +2,12 @@ package ru.bryzgalin.main;
 
 import ru.bryzgalin.animals.Bird;
 import ru.bryzgalin.exceptions.IllegalMarkException;
+import ru.bryzgalin.incapsulationTasks.citiesRoads.City;
+import ru.bryzgalin.incapsulationTasks.citiesRoads.Road;
 import ru.bryzgalin.interfaces.Lenghtable;
 import ru.bryzgalin.interfaces.Meowable;
 import ru.bryzgalin.interfaces.PolyChainable;
+import ru.bryzgalin.interfaces.WayFinder;
 import ru.bryzgalin.mathematical.*;
 import ru.bryzgalin.misc.Student;
 
@@ -19,6 +22,13 @@ public class Main {
     public static void main(String[] args) {
         PolyChain a = new PolyChain(new Point(1,4), new Point(7,3), new Point(4,6));
         PolyLine b = new PolyLine(new Point(1,4),new Point(4,6), new Point(7,3), new Point(1,4));
+        City city3 = new City("Narva", null);
+        City city4 = new City("London",null, new Road(city3));
+        City city1 = new City("Ufa", null,new Road(city4));
+        City city2 = new City("Tomsk", null,new Road(city3));
+
+        System.out.println(city1.equals(city2));
+        System.out.println(city2.equals(city1));
     }
 
     //--//
@@ -26,11 +36,10 @@ public class Main {
     public static double packageSum() {
         return summarize(7, new Fraction(11,3),3.21, new BigInteger("12345678912345678912"));
     }
+
     public static double powXY(String x, String y){
         return pow(parseInt(x),parseInt(y));
     }
-
-    //--//
 
     public static PolyLine chainConnector(PolyChainable... polyChainables) {
         List<Point> bigList = new ArrayList<>();

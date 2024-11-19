@@ -70,6 +70,7 @@ public class PolyLine implements Lenghtable{
         List<Point> tmp = thisPoints.subList(0, thisPoints.size()-1);
 
         if (tmp.equals(otherPoints.reversed())||thisPoints.equals(otherPoints.reversed())) Collections.reverse(otherPoints);
+
         if (this instanceof PolyChain) thisPoints.add(thisPoints.getFirst());
         if (o instanceof PolyChain) otherPoints.add(otherPoints.getFirst());
 

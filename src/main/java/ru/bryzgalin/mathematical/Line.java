@@ -48,7 +48,17 @@ public class Line implements Lenghtable, PolyChainable {
     public String toString() {
         return "mathematical.Line from " + getA() + " to " + getB();
     }
-
+    public Line clone(){
+        //try {
+            //Line l = (Line)super.clone();
+            Line l = new Line(getA().clone(),getB().clone());
+            //l.a = getA().clone();
+            //l.b = getB().clone();
+            return l;
+        /*} catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }*/
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

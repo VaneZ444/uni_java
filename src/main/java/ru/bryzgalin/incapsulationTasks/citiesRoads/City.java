@@ -8,7 +8,6 @@ import ru.bryzgalin.mathematical.PolyChain;
 
 import java.util.*;
 
-@ToString
 public class City {
     @Getter
     protected final String cityName;
@@ -57,16 +56,30 @@ public class City {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof City city)) return false;
-        return new HashSet<>(getRoadList()).containsAll((city.getRoadList()));
+        List<Road> tmp = getRoadList();
+        List<Road> tmp2 = city.getRoadList();
+        return tmp.containsAll((tmp2));
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "cityName='" + cityName + '\'' +
+                ", roadList=" + roadList +
+                ", alg=" + alg +
+                '}';
     }
 
     @Override
     public int hashCode() {
+        System.out.println("doing hash for " + this.getCityName());
         List<Road> thisRoads = new ArrayList<>(this.getRoadList());
+        System.out.println("his cities are:" + thisRoads);
         int hash = 0;
         for(Road r: thisRoads){
-            hash+=Objects.hash(r);
+            hash+=r.hashCode();
         }
+        System.out.println("hash for " + this.getCityName() + " is " + hash);
         return hash;
     }
 }

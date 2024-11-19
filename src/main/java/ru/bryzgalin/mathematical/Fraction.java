@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.io.Serializable;
 
 @Getter
-public final class Fraction extends Number implements Serializable {
+public final class Fraction extends Number implements Serializable, Cloneable {
     private final int num;
     private final int den;
 
@@ -84,6 +84,14 @@ public final class Fraction extends Number implements Serializable {
 
     public Fraction div(int num) {
         return this.div(new Fraction(num, 1));
+    }
+
+    public Fraction clone(){
+        try {
+            return (Fraction) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

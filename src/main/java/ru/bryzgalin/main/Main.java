@@ -3,11 +3,11 @@ package ru.bryzgalin.main;
 import ru.bryzgalin.animals.Bird;
 import ru.bryzgalin.exceptions.IllegalMarkException;
 import ru.bryzgalin.incapsulationTasks.citiesRoads.City;
+import ru.bryzgalin.incapsulationTasks.citiesRoads.ComeBackCity;
 import ru.bryzgalin.incapsulationTasks.citiesRoads.Road;
 import ru.bryzgalin.interfaces.Lenghtable;
 import ru.bryzgalin.interfaces.Meowable;
 import ru.bryzgalin.interfaces.PolyChainable;
-import ru.bryzgalin.interfaces.WayFinder;
 import ru.bryzgalin.mathematical.*;
 import ru.bryzgalin.misc.Student;
 
@@ -20,17 +20,44 @@ import static java.lang.Math.pow;
 
 public class Main {
     public static void main(String[] args) {
+        cloneTest();
+    }
+    public static void cloneTest(){
+        Fraction a = new Fraction(5,2);
+        Fraction b = a.clone();
+        System.out.println(a);
+        System.out.println(b);
+        Point c = new Point(2,4);
+        Point d = c.clone();
+        System.out.println(c);
+        System.out.println(d);
+
+        Line aa = new Line(2,4,3,6);
+        System.out.println(aa);
+        Line bb = aa.clone();
+        System.out.println(bb);
+
+    }
+    public static void studentTest(){
+        Student oleg = new Student("Oleg", 5,4,3);
+        Student olegg = new Student("Oleg", 5,4,3);
+        System.out.println(olegg.equals(oleg));
+
+        System.out.println(olegg.hashCode());
+        System.out.println(oleg.hashCode());
+    }
+    public static void cityTest(){
         PolyChain a = new PolyChain(new Point(1,4), new Point(7,3), new Point(4,6));
         PolyLine b = new PolyLine(new Point(1,4),new Point(4,6), new Point(7,3), new Point(1,4));
         City city3 = new City("Narva", null);
-        City city4 = new City("London",null, new Road(city3));
-        City city1 = new City("Ufa", null,new Road(city4));
+        City city4 = new City("London",null);
+        ComeBackCity city1 = new ComeBackCity("Ufa", null,new Road(city4));
         City city2 = new City("Tomsk", null,new Road(city3));
-
         System.out.println(city1.equals(city2));
         System.out.println(city2.equals(city1));
+        System.out.println(city2.hashCode());
+        //System.out.println(city1.hashCode());
     }
-
     //--//
 
     public static double packageSum() {

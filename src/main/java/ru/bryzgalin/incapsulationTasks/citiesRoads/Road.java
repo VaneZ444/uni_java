@@ -8,7 +8,6 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@ToString
 public class Road {
     private City city;
     private int length;
@@ -33,6 +32,14 @@ public class Road {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(city);
+        return Objects.hash(city.getRoadList(), city.getCityName());
+    }
+
+    @Override
+    public String toString() {
+        return "Road{" +
+                "city=" + city.getCityName() +
+                ", length=" + length +
+                '}';
     }
 }

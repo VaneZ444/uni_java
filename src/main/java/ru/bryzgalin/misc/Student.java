@@ -4,6 +4,7 @@ import ru.bryzgalin.exceptions.IllegalMarkException;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
@@ -48,5 +49,17 @@ public class Student {
                 "studentName='" + studentName + '\'' +
                 ", marks=" + markList +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student student)) return false;
+        return (Objects.equals(studentName, student.studentName))&&(round() == student.round());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(studentName, round());
     }
 }

@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 
 import java.util.Objects;
 
-public class Point implements Comparable<Point> {
+public class Point implements Comparable<Point>, Cloneable{
     int x;
     int y;
 
@@ -27,7 +27,13 @@ public class Point implements Comparable<Point> {
         if (this.x == point.x) return (this.y - point.y);
         return (this.x - point.x);
     }
-
+    public Point clone(){
+        try {
+            return (Point) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

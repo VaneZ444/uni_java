@@ -27,8 +27,8 @@ public class Triangle extends Figure implements PolyChainable {
     }
 
     @Override
-    public PolygonalChain getPolygonalChain() {
-        return new PolygonalChain(new Point(a), new Point(b), new Point(c));
+    public PolyLine getPolygonalChain() {
+        return new PolyLine(new Point(a), new Point(b), new Point(c));
     }
 
     @Override

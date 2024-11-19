@@ -14,8 +14,8 @@ public class Rectangle extends Figure{
     public Rectangle(int x, int y, int len, int len2) {
         this(new Point(2,3),3,7);
     }
-    public PolygonalChain toJagged() {
-        return new PolygonalRing(
+    public PolyLine toJagged() {
+        return new PolyChain(
                 new Point(super.a),
                 new Point(super.a.x + len, super.a.y),
                 new Point(super.a.x + len, super.a.y + len2),

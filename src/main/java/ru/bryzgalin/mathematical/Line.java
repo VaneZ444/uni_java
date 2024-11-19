@@ -4,6 +4,7 @@ import ru.bryzgalin.interfaces.Lenghtable;
 import ru.bryzgalin.interfaces.PolyChainable;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Line implements Lenghtable, PolyChainable {
     private Point a;
@@ -39,12 +40,26 @@ public class Line implements Lenghtable, PolyChainable {
     }
 
     @Override
-    public PolygonalChain getPolygonalChain() {
-        return new PolygonalChain(List.of(new Point(a), new Point(b)));
+    public PolyLine getPolygonalChain() {
+        return new PolyLine(List.of(new Point(a), new Point(b)));
     }
 
     @Override
     public String toString() {
         return "mathematical.Line from " + getA() + " to " + getB();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Line line)) return false;
+
+        return  (Objects.equals(a, line.a)&&Objects.equals(b, line.b))||
+                (Objects.equals(b, line.a)&&Objects.equals(a, line.b));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(a)+Objects.hash(b);
     }
 }

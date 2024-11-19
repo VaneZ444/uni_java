@@ -5,10 +5,7 @@ import ru.bryzgalin.exceptions.IllegalMarkException;
 import ru.bryzgalin.interfaces.Lenghtable;
 import ru.bryzgalin.interfaces.Meowable;
 import ru.bryzgalin.interfaces.PolyChainable;
-import ru.bryzgalin.mathematical.Figure;
-import ru.bryzgalin.mathematical.Fraction;
-import ru.bryzgalin.mathematical.Point;
-import ru.bryzgalin.mathematical.PolygonalChain;
+import ru.bryzgalin.mathematical.*;
 import ru.bryzgalin.misc.Student;
 
 import java.math.*;
@@ -20,11 +17,8 @@ import static java.lang.Math.pow;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(powXY(args[0],args[1]));
-        Point ue = new Point(3,5);
-        java.awt.Point jue = new java.awt.Point(5,4);
-        System.out.println(ue);
-        System.out.println(jue);
+        PolyChain a = new PolyChain(new Point(1,4), new Point(7,3), new Point(4,6));
+        PolyLine b = new PolyLine(new Point(1,4),new Point(4,6), new Point(7,3), new Point(1,4));
     }
 
     //--//
@@ -38,12 +32,12 @@ public class Main {
 
     //--//
 
-    public static PolygonalChain chainConnector(PolyChainable... polyChainables) {
+    public static PolyLine chainConnector(PolyChainable... polyChainables) {
         List<Point> bigList = new ArrayList<>();
         for (PolyChainable plc : polyChainables) {
             bigList.addAll(plc.getPolygonalChain().getPoints());
         }
-        return new PolygonalChain(bigList);
+        return new PolyLine(bigList);
     }
 
     public static float sumMeasurer(List<Lenghtable> lenghtables) {

@@ -30,8 +30,8 @@ public class Square extends Figure implements PolyChainable {
         return this.squareLength;
     }
 
-    public PolygonalChain toJagged() {
-        return new PolygonalRing(
+    public PolyLine toJagged() {
+        return new PolyChain(
                 new Point(super.a),
                 new Point(super.a.x + getSide(), super.a.y),
                 new Point(super.a.x + getSide(), super.a.y + getSide()),
@@ -46,7 +46,7 @@ public class Square extends Figure implements PolyChainable {
     }
 
     @Override
-    public PolygonalChain getPolygonalChain() {
+    public PolyLine getPolygonalChain() {
         return toJagged();
     }
 }

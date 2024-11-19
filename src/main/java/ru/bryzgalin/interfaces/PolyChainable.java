@@ -1,7 +1,7 @@
 package ru.bryzgalin.interfaces;
 
-import ru.bryzgalin.mathematical.PolygonalChain;
+import ru.bryzgalin.mathematical.PolyLine;
 
 public interface PolyChainable {
-    public PolygonalChain getPolygonalChain();
+    public PolyLine getPolygonalChain();
 }

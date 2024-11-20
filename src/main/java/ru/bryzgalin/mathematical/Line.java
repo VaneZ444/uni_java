@@ -6,7 +6,7 @@ import ru.bryzgalin.interfaces.PolyChainable;
 import java.util.List;
 import java.util.Objects;
 
-public class Line implements Lenghtable, PolyChainable {
+public class Line implements Lenghtable, PolyChainable, Cloneable {
     private Point a;
     private Point b;
 
@@ -49,15 +49,14 @@ public class Line implements Lenghtable, PolyChainable {
         return "mathematical.Line from " + getA() + " to " + getB();
     }
     public Line clone(){
-        //try {
-            //Line l = (Line)super.clone();
-            Line l = new Line(getA().clone(),getB().clone());
-            //l.a = getA().clone();
-            //l.b = getB().clone();
+        try {
+            Line l = (Line)super.clone();
+            l.a = a.clone();
+            l.b = b.clone();
             return l;
-        /*} catch (CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
-        }*/
+        }
     }
     @Override
     public boolean equals(Object o) {

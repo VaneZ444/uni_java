@@ -21,6 +21,7 @@ import static java.lang.Math.pow;
 public class Main {
     public static void main(String[] args) {
         cloneTest();
+        //cityTest();
     }
     public static void cloneTest(){
         Fraction a = new Fraction(5,2);
@@ -51,12 +52,14 @@ public class Main {
         PolyLine b = new PolyLine(new Point(1,4),new Point(4,6), new Point(7,3), new Point(1,4));
         City city3 = new City("Narva", null);
         City city4 = new City("London",null);
+
         ComeBackCity city1 = new ComeBackCity("Ufa", null,new Road(city4));
         City city2 = new City("Tomsk", null,new Road(city3));
+
         System.out.println(city1.equals(city2));
         System.out.println(city2.equals(city1));
         System.out.println(city2.hashCode());
-        //System.out.println(city1.hashCode());
+        System.out.println(city1.hashCode());
     }
     //--//
 

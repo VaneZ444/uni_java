@@ -53,14 +53,27 @@ public class City {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof City city)) return false;
+        if (roadList.size() != city.roadList.size()) return false;
+        if (!roadList.containsAll((city.getRoadList()))) return false;
+        return Objects.equals(getCityName(),city.getCityName());
+        /*
         List<Road> tmp = getRoadList();
         List<Road> tmp2 = city.getRoadList();
         return tmp.containsAll((tmp2));
+        */
     }
 
+    @Override
+    public final int hashCode() {
+        int hashcode = getCityName().hashCode()*31;
+        for (Road r: roadList){
+            hashcode += r.hashCode();
+        }
+        return hashcode;
+    }
     @Override
     public String toString() {
         return "City{" +
@@ -70,16 +83,4 @@ public class City {
                 '}';
     }
 
-    @Override
-    public int hashCode() {
-        System.out.println("doing hash for " + this.getCityName());
-        List<Road> thisRoads = new ArrayList<>(this.getRoadList());
-        System.out.println("his cities are:" + thisRoads);
-        int hash = 0;
-        for(Road r: thisRoads){
-            hash+=r.hashCode();
-        }
-        System.out.println("hash for " + this.getCityName() + " is " + hash);
-        return hash;
-    }
 }

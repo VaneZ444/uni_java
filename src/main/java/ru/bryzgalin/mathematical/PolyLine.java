@@ -60,7 +60,7 @@ public class PolyLine implements Lenghtable{
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PolyLine polyLine)) return false;
 
@@ -78,7 +78,7 @@ public class PolyLine implements Lenghtable{
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         List<Point> thisPoints = new ArrayList<>(this.getPoints());
         if (this instanceof PolyChain) thisPoints.add(thisPoints.getFirst());
         int hash = 0;

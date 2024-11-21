@@ -1,5 +1,5 @@
 package ru.bryzgalin.karate;
 
-interface Attack {
+interface Attacker {
     String strike(KarateGuy karateGuy);
 }

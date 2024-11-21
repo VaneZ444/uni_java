@@ -1,29 +1,29 @@
 package ru.bryzgalin.karate;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class Combo {
-    private List<Attack> attacks;
+    private List<Attacker> attacks;
 
     public Combo() {
         this.attacks = new ArrayList<>();
     }
 
-    public void addAttack(Attack attack) {
-        attacks.add(attack);
+    public void addAttack(Attacker attacker) {
+        attacks.add(attacker);
     }
     public void removeLastAttack(){
         attacks.removeLast();
     }
-    public List<Attack> getAttacks(){
-        return new ArrayList<>(attacks);
-    }
 
-    public List<String> perform(KarateGuy karateGuy) {
-        List<String> results = new ArrayList<>();
-        for (Attack attack : attacks) {
-            results.add(attack.strike(karateGuy));
+    public String perform(KarateGuy karateGuy) {
+        String results = "";
+        for (Attacker attacker : attacks){
+            results = results + (attacker.strike(karateGuy)) + "\n";
         }
         return results;
     }

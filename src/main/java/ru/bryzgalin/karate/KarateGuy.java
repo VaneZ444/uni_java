@@ -24,7 +24,7 @@ public class KarateGuy {
     public final String airPunch() {
         return new AirPunch().strike(this);
     }
-    public final List<String> perform(Combo combo) {
-        return new Combo().perform(this);
+    public final String perform(Combo combo) {
+        return combo.perform(this);
     }
 }

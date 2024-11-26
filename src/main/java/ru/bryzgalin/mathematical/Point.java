@@ -1,10 +1,9 @@
 package ru.bryzgalin.mathematical;
 
-import lombok.EqualsAndHashCode;
-
+import ru.bryzgalin.interfaces.PointMeasutable;
 import java.util.Objects;
 
-public class Point implements Comparable<Point>, Cloneable{
+public class Point implements Comparable<Point>, Cloneable, PointMeasutable {
     int x;
     int y;
 
@@ -33,6 +32,9 @@ public class Point implements Comparable<Point>, Cloneable{
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public float distanceTo(Point p){
+        return (float) Math.sqrt((x) * (p.x) + (y) * (p.y));
     }
     @Override
     public boolean equals(Object o) {

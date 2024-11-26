@@ -17,4 +17,9 @@ public class AddMarksUndo implements StudentAction{
         }
         student.history.remove(this);
     }
+
+    @Override
+    public String toString() {
+        return "Marks{" + markCount +'}';
+    }
 }

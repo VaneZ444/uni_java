@@ -13,4 +13,8 @@ public class SetName implements StudentAction{
         student.setName(lastName);
         student.history.remove(this);
     }
+    @Override
+    public String toString() {
+        return "old name{"+lastName+'}';
+    }
 }

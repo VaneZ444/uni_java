@@ -8,11 +8,11 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-public class Student {
+public class Student implements Comparable<Student>{
     protected String studentName;
     protected List<Integer> markList = new ArrayList<>();
     private Predicate<Integer> rule;
-    protected List<StudentAction> history;
+    public List<StudentAction> history = new ArrayList<>();
     public Student(String studentName, Predicate<Integer> rule, Integer... marks) {
         setName(studentName);
         this.rule = rule;
@@ -67,5 +67,10 @@ public class Student {
     @Override
     public int hashCode() {
         return Objects.hash(studentName, round());
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return Double.compare(this.round(), o.round());
     }
 }

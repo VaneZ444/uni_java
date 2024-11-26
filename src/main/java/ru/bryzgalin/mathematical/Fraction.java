@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.io.Serializable;
 
 @Getter
-public final class Fraction extends Number implements Serializable, Cloneable {
+public final class Fraction extends Number implements Serializable, Cloneable, Comparable<Fraction> {
     private final int num;
     private final int den;
 
@@ -99,4 +99,8 @@ public final class Fraction extends Number implements Serializable, Cloneable {
         return num + "/" + den;
     }
 
+    @Override
+    public int compareTo(Fraction o) {
+        return Double.compare(this.doubleValue(), o.doubleValue());
+    }
 }

@@ -6,37 +6,37 @@ import ru.bryzgalin.interfaces.PolyChainable;
 import java.util.List;
 import java.util.Objects;
 
-public class Line implements Lenghtable, PolyChainable, Cloneable {
-    private Point a;
-    private Point b;
+public class Line<T extends Point> implements Lenghtable, PolyChainable, Cloneable {
+    private T a;
+    private T b;
 
-    public Line(Point a, Point b) {
-        this.a = new Point(a);
-        this.b = new Point(b);
+    public Line(T a, T b) {
+        this.a = a;
+        this.b = b;
     }
 
     public Line(int aX, int aY, int bX, int bY) {
-        this(new Point(aX, aY), new Point(bX, bY));
+        this((T)new Point(aX, aY),(T) new Point(bX, bY));
     }
 
-    public void setA(Point a) {
-        this.a = new Point(a);
+    public void setA(T a) {
+        this.a = a;
     }
 
-    public Point getA() {
+    public T getA() {
         return a;
     }
 
-    public void setB(Point b) {
-        this.b = new Point(b);
+    public void setB(T b) {
+        this.b = b;
     }
 
-    public Point getB() {
+    public T getB() {
         return b;
     }
 
     public float len() {
-        return (float) Math.sqrt((getA().x) * (getB().x) + (getA().y) * (getB().y));
+        return a.distanceTo(b);
     }
 
     @Override

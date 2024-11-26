@@ -1,8 +1,8 @@
 package ru.bryzgalin.karate;
 
-public class AirPunch implements Attacker {
+public class AirPunch implements Action{
     @Override
-    public String strike(KarateGuy karateGuy) {
-        return karateGuy.getName()+": вжух!";
+    public void act(KarateKid karateKid) {
+        karateKid.airPunch();
     }
 }

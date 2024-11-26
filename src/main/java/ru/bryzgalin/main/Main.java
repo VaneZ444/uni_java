@@ -2,9 +2,6 @@ package ru.bryzgalin.main;
 
 import ru.bryzgalin.animals.Bird;
 import ru.bryzgalin.exceptions.IllegalMarkException;
-import ru.bryzgalin.incapsulationTasks.citiesRoads.City;
-import ru.bryzgalin.incapsulationTasks.citiesRoads.ComeBackCity;
-import ru.bryzgalin.incapsulationTasks.citiesRoads.Road;
 import ru.bryzgalin.interfaces.Lenghtable;
 import ru.bryzgalin.interfaces.Meowable;
 import ru.bryzgalin.interfaces.PolyChainable;
@@ -24,13 +21,15 @@ public class Main {
         karateTest();
     }
     public static void karateTest(){
-        KarateGuy karateGuy = new KarateGuy("Daniel");
-        Combo combo = new Combo();
-        combo.addAttack(new Punch());
-        combo.addAttack(new Kick());
-        combo.addAttack(new Punch());
-        combo.addAttack(new AirPunch());
-        System.out.println(karateGuy.perform(combo));
+        Student st = new Student("Pete");
+        st.addMarks(3,2);
+        st.setName("Anya");
+        st.addMarks(5,5);
+        st.undo();//-5
+        st.undo();//-5
+        st.undo();//-anya
+        st.undo();//-2
+        st.undo();//-3
     }
     //--//
 

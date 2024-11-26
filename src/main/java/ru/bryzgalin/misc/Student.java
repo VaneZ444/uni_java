@@ -9,16 +9,19 @@ import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 public class Student {
-    private String studentName;
-    private List<Integer> markList = new ArrayList<>();
+    protected String studentName;
+    protected List<Integer> markList = new ArrayList<>();
     private Predicate<Integer> rule;
-
+    protected List<StudentAction> history;
     public Student(String studentName, Predicate<Integer> rule, Integer... marks) {
-        this.studentName = studentName;
+        setName(studentName);
         this.rule = rule;
         addMarks(marks);
     }
-
+    public void setName(String studentName){
+        this.studentName = studentName;
+        history.add(new SetName(this.studentName,this));
+    }
     public Student(String studentName, Integer... marks) {
         this(studentName, mark -> mark >= 2 && mark <= 5, marks);
     }
@@ -32,6 +35,7 @@ public class Student {
             if (!rule.test(marks[i])) throw new IllegalMarkException(marks[i]);
             markList.add(marks[i]);
         });
+        history.add(new AddMarksUndo(marks.length,this));
     }
 
     public void removeMark(int mark) {
@@ -42,7 +46,10 @@ public class Student {
     public double round() {
         return markList.stream().mapToDouble(d -> d).average().orElse(0.0);
     }
-
+    public void undo(){
+        history.getLast().undo();
+        history.removeLast();
+    }
     @Override
     public String toString() {
         return "misc.Student{" +
@@ -57,7 +64,6 @@ public class Student {
         if (!(o instanceof Student student)) return false;
         return (Objects.equals(studentName, student.studentName))&&(round() == student.round());
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(studentName, round());

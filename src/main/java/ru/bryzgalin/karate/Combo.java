@@ -6,25 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class Combo {
-    private List<Attacker> attacks;
+public class Combo implements Action {
+    private List<Action> actions = new ArrayList<>();
 
-    public Combo() {
-        this.attacks = new ArrayList<>();
+    public Combo(List<Action> actions) {
+        this.actions = actions;
     }
-
-    public void addAttack(Attacker attacker) {
-        attacks.add(attacker);
+    public void act(KarateKid kid){
+        for(Action a: actions){
+            a.act(kid);
+        }
+    }
+    public void addAttack(Action action) {
+        actions.add(action);
     }
     public void removeLastAttack(){
-        attacks.removeLast();
-    }
-
-    public String perform(KarateGuy karateGuy) {
-        String results = "";
-        for (Attacker attacker : attacks){
-            results = results + (attacker.strike(karateGuy)) + "\n";
-        }
-        return results;
+        actions.removeLast();
     }
 }

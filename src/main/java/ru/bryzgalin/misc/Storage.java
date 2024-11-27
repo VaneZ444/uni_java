@@ -2,18 +2,23 @@ package ru.bryzgalin.misc;
 
 public class Storage<T> {
     private final T item;
-    private final T alt;
-
-    public Storage(T item, T alt) {
+    final static Storage nullStorage = new Storage<>(null);
+    private Storage(T item) {
         this.item = item;
-        this.alt = alt;
     }
 
-    public T getItem() {
+    public T getItem(T alt) {
         return item != null ? item : alt;
     }
 
     public String toString() {
         return "Box[" + item + ']';
+    }
+    public static <V> Storage<V> of(V item){
+        if(item == null) empty();
+        return new Storage<>(item);
+    }
+    public static Storage empty(){
+        return nullStorage;
     }
 }

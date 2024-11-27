@@ -1,6 +1,7 @@
 package ru.bryzgalin.misc;
 
 import ru.bryzgalin.exceptions.IllegalMarkException;
+import ru.bryzgalin.interfaces.StudentAction;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -8,20 +9,23 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
     protected String studentName;
     protected List<Integer> markList = new ArrayList<>();
     private Predicate<Integer> rule;
     public List<StudentAction> history = new ArrayList<>();
+
     public Student(String studentName, Predicate<Integer> rule, Integer... marks) {
         setName(studentName);
         this.rule = rule;
         addMarks(marks);
     }
-    public void setName(String studentName){
+
+    public void setName(String studentName) {
         this.studentName = studentName;
-        history.add(new SetName(this.studentName,this));
+        history.add(new SetName(this.studentName, this));
     }
+
     public Student(String studentName, Integer... marks) {
         this(studentName, mark -> mark >= 2 && mark <= 5, marks);
     }
@@ -35,7 +39,7 @@ public class Student implements Comparable<Student>{
             if (!rule.test(marks[i])) throw new IllegalMarkException(marks[i]);
             markList.add(marks[i]);
         });
-        history.add(new AddMarksUndo(marks.length,this));
+        history.add(new AddMarksUndo(marks.length, this));
     }
 
     public void removeMark(int mark) {
@@ -46,10 +50,17 @@ public class Student implements Comparable<Student>{
     public double round() {
         return markList.stream().mapToDouble(d -> d).average().orElse(0.0);
     }
-    public void undo(){
+
+    public void undo() {
         history.getLast().undo();
         history.removeLast();
     }
+
+    @Override
+    public int compareTo(Student o) {
+        return Double.compare(this.round(), o.round());
+    }
+
     @Override
     public String toString() {
         return "misc.Student{" +
@@ -62,15 +73,11 @@ public class Student implements Comparable<Student>{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student student)) return false;
-        return (Objects.equals(studentName, student.studentName))&&(round() == student.round());
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(studentName, round());
+        return (Objects.equals(studentName, student.studentName)) && (round() == student.round());
     }
 
     @Override
-    public int compareTo(Student o) {
-        return Double.compare(this.round(), o.round());
+    public int hashCode() {
+        return Objects.hash(studentName, round());
     }
 }

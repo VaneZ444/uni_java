@@ -1,8 +1,8 @@
 package ru.bryzgalin.misc;
 
-import java.util.List;
+import ru.bryzgalin.interfaces.StudentAction;
 
-public class AddMarksUndo implements StudentAction{
+public class AddMarksUndo implements StudentAction {
     protected int markCount;
     protected Student student;
 

@@ -37,7 +37,4 @@ public class ObjectStack<T> {
         return stack.size();
     }
 
-    public void clear() {
-        stack.clear();
-    }
 }

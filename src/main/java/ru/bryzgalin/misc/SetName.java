@@ -1,6 +1,8 @@
 package ru.bryzgalin.misc;
 
-public class SetName implements StudentAction{
+import ru.bryzgalin.interfaces.StudentAction;
+
+public class SetName implements StudentAction {
     protected String lastName;
     protected Student student;
     public SetName(String studentName, Student student) {

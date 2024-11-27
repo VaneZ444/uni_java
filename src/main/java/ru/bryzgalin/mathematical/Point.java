@@ -33,6 +33,7 @@ public class Point implements Comparable<Point>, Cloneable, PointMeasutable {
             throw new RuntimeException(e);
         }
     }
+    @Override
     public float distanceTo(Point p){
         return (float) Math.sqrt((x) * (p.x) + (y) * (p.y));
     }

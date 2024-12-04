@@ -1,9 +1,12 @@
 package ru.bryzgalin.mathematical;
 
-import ru.bryzgalin.interfaces.PointMeasutable;
+import lombok.Getter;
+import lombok.Setter;
+import ru.bryzgalin.interfaces.PointMeasurable;
 import java.util.Objects;
-
-public class Point implements Comparable<Point>, Cloneable, PointMeasutable {
+@Setter
+@Getter
+public class Point implements Comparable<Point>, Cloneable, PointMeasurable {
     int x;
     int y;
 
@@ -14,6 +17,12 @@ public class Point implements Comparable<Point>, Cloneable, PointMeasutable {
 
     public Point(Point cloned) {
         this(cloned.x, cloned.y);
+    }
+
+    public Point move(int dx, int dy){
+        x+=dx;
+        y+=dy;
+        return this;
     }
 
     @Override

@@ -34,7 +34,11 @@ public class Line<T extends Point> implements Lenghtable, PolyChainable, Cloneab
     public T getB() {
         return b;
     }
-
+    public Line<T> move(int dx, int dy){
+        a.move(dx,dy);
+        b.move(dx,dy);
+        return this;
+    }
     public float len() {
         return a.distanceTo(b);
     }

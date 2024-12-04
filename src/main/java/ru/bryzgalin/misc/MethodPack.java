@@ -79,4 +79,13 @@ public class MethodPack {
         return sqr;
     }
 
+    public static Storage<Integer> sum(List<Integer> lst) {
+        if(lst.isEmpty()) return Storage.empty();
+        int sum = 0;
+        for (Integer integer : lst) {
+            sum += integer;
+        }
+        return Storage.of(sum);
+    }
+
 }

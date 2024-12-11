@@ -30,7 +30,7 @@ public class PolyLine implements Lenghtable{
         Line temp;
         float length = 0;
         for (int i = 0; i < linePoints.size() - 1; i++) {
-            temp = new Line(linePoints.get(i), linePoints.get(i + 1));
+            temp = Line.of(linePoints.get(i), linePoints.get(i + 1));
             length += temp.len();
         }
         return length;

@@ -10,29 +10,32 @@ public class Line<T extends Point> implements Lenghtable, PolyChainable, Cloneab
     private T a;
     private T b;
 
-    public Line(T a, T b) {
+    private Line(T a, T b) {
         this.a = a;
         this.b = b;
     }
 
-    public Line(int aX, int aY, int bX, int bY) {
-        this((T)new Point(aX, aY),(T) new Point(bX, bY));
+    public static final Line<Point> of(int aX, int aY, int bX, int bY) {
+        return new Line(new Point(aX, aY), new Point(bX, bY));
     }
 
+    public static final <V extends Point> Line<V> of(V p1, V p2){
+        return new Line<>(p1,p2);
+    }
     public void setA(T a) {
-        this.a = a;
+        this.a = (T) a.clone();
     }
 
     public T getA() {
-        return a;
+        return (T) a.clone();
     }
 
     public void setB(T b) {
-        this.b = b;
+        this.b = (T) b.clone();
     }
 
     public T getB() {
-        return b;
+        return (T) b.clone();
     }
     public Line<T> move(int dx, int dy){
         a.move(dx,dy);

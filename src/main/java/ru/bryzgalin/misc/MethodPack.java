@@ -80,7 +80,7 @@ public class MethodPack {
     }
 
     public static Storage<Integer> sum(List<Integer> lst) {
-        if(lst.isEmpty()) return Storage.empty();
+        if (lst.isEmpty()) return Storage.empty();
         int sum = 0;
         for (Integer integer : lst) {
             sum += integer;
@@ -88,4 +88,40 @@ public class MethodPack {
         return Storage.of(sum);
     }
 
+    public static <T extends Number> List<T> fillList(List<T> list) {
+        for (int i = 1; i <= 100; i++) {
+            list.add((T) Integer.valueOf(i));
+        }
+        return list;
+    }
+
+    public static <T extends VolumetricPoint> Storage<T> storePoint(Storage<?> storage) {
+        storage = Storage.of(new VolumetricPoint(2, 3, 6));
+        return (Storage<T>) storage;
+    }
+
+    public static <T extends Number> double findMaxStoraged(List<Storage<T>> storageList) {
+        double max = 0.0;
+        for (Storage<T> storage : storageList) {
+            double a = storage.getItem((T) Integer.valueOf(0)).doubleValue();
+            if (a > max) max = a;
+        }
+        return max;
+    }
+
+    public static <T extends Point> Line<T> moveX10(Line<T> line) {
+        Point a = line.getA();
+        Point b = line.getB();
+        if (a.getX() < 0) {
+            a.setX(a.getX() - 10);
+        } else {
+            a.setX(a.getX() + 10);
+        }
+        if (b.getX() < 0) {
+            b.setX(b.getX() - 10);
+        } else {
+            b.setX(b.getX() + 10);
+        }
+        return line;
+    }
 }

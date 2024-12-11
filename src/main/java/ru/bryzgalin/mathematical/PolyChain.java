@@ -11,7 +11,7 @@ public class PolyChain extends PolyLine implements PolyChainable {
     }
     public float len(){
         if (linePoints.size() < 3) return super.len();
-        Line tempLine = new Line(linePoints.getFirst(),linePoints.getLast());
+        Line tempLine = Line.of(linePoints.getFirst(),linePoints.getLast());
         return super.len() + tempLine.len();
     }
     public List<Point> getPoints(){

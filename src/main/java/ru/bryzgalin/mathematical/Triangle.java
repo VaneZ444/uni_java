@@ -18,9 +18,9 @@ public class Triangle extends Figure implements PolyChainable {
 
     @Override
     public double square() {
-        double sideA = new Line(a, b).len();
-        double sideB = new Line(a, c).len();
-        double sideC = new Line(b, c).len();
+        double sideA = Line.of(a, b).len();
+        double sideB = Line.of(a, c).len();
+        double sideC = Line.of(b, c).len();
         double p = (sideA + sideB + sideC) / 2;
         double s = Math.sqrt((p * (p - sideA) * (p - sideB) * (p - sideC)));
         return s;

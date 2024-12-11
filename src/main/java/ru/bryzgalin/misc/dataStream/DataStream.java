@@ -2,6 +2,8 @@ package ru.bryzgalin.misc.dataStream;
 
 import java.util.*;
 import java.util.function.*;
+import java.util.stream.Stream;
+
 
 public class DataStream<T> {
 

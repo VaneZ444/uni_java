@@ -1,14 +1,20 @@
 package ru.bryzgalin.main;
 
+import ru.bryzgalin.animals.*;
+import ru.bryzgalin.interfaces.Meowable;
 import ru.bryzgalin.misc.dataStream.DataStream;
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-        int sum = DataStream.of(numbers)
-                .map(n -> n * 2)
-                .filter(n -> n > 5)
-                .reduce(0, Integer::sum);
-        System.out.println("sum: " + sum);
+        Dog dog = new Dog("john");
+        DogCat dc = new DogCat();
+        test(fakeCat);
+        System.out.println(fakeCat);
+    }
+    public static void test(Meowable m){
+        m.meow();
+        m.meow();
+        m.meow();
+        m.meow();
     }
 }

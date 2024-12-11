@@ -1,14 +1,16 @@
 package ru.bryzgalin.animals;
 
+import lombok.Getter;
 import ru.bryzgalin.interfaces.Meowable;
 
 public class Cat implements Meowable {
-    String catName;
+    @Getter
+    private String catName;
     public Cat(String catName){
-        this.catName = catName;
+        this.setCatName(catName);
     }
     public String meowStr(int meowCount){
-        String meowString = catName + ":meow";
+        String meowString = getCatName() + ":meow";
         for (int i = 0; i < meowCount-1; i++) {
             meowString +="-meow";
         }
@@ -24,8 +26,15 @@ public class Cat implements Meowable {
     @Override
     public String toString() {
         return "animals.Cat{" +
-                "cat='" + catName + '\'' +
+                "cat='" + getCatName() + '\'' +
                 '}';
     }
 
+    public String getCatName() {
+        return catName;
+    }
+
+    public void setCatName(String catName) {
+        this.catName = catName;
+    }
 }

@@ -1,7 +1,10 @@
 package ru.bryzgalin.animals;
 
+import lombok.Getter;
+
+@Getter
 public class Dog {
-    String name;
+    private String name;
 
     public Dog(String name) {
         this.name = name;

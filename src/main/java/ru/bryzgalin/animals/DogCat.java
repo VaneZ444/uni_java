@@ -1,6 +1,4 @@
 package ru.bryzgalin.animals;
-
-import lombok.RequiredArgsConstructor;
 import ru.bryzgalin.interfaces.Meowable;
 
 public class DogCat extends Dog implements Meowable {

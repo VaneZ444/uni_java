@@ -23,6 +23,7 @@ public class Square extends Figure implements PolyChainable {
     }
 
     public double square() {
+        System.out.println("calculating");
         return squareLength * squareLength;
     }
 

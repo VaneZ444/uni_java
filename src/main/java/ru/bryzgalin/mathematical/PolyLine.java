@@ -51,6 +51,26 @@ public class PolyLine implements Lenghtable{
         }
         return ptList;
     }
+    public LineIterator iterator() {
+        return new PolyLineIterator();
+    }
+
+    private class PolyLineIterator implements LineIterator {
+        private int currentIndex = 0;
+
+        @Override
+        public Point next() {
+            if (!hasNext()) {
+                throw new IllegalStateException("No more points in the line.");
+            }
+            return linePoints.get(currentIndex++);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < linePoints.size();
+        }
+    }
 
     @Override
     public String toString() {

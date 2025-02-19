@@ -74,7 +74,7 @@ public class PolyLine implements Lenghtable{
 
     @Override
     public String toString() {
-        return "mathematical.JaggedLine{" +
+        return "PolyLine{" +
                 "linePoints=" + linePoints +
                 '}';
     }

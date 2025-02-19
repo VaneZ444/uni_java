@@ -24,11 +24,11 @@ public class Main {
                 )
                 .distinct()
                 .sorted(Comparator.comparingInt(Point::getX))
-                .collect(Collectors.groupingBy(Point::getY)) // Группируем по координате y
-                .values() // Получаем коллекцию списков точек
-                .stream() // Преобразуем в поток списков точек
-                .map(PolyLine::new) // Преобразуем каждый список в PolyLine
-                .toList(); // Собираем в список PolyLine
+                .collect(Collectors.groupingBy(Point::getY))
+                .values() //коллекция списков точек
+                .stream() //поток списков точек
+                .map(PolyLine::new) //каждый список в PolyLine
+                .toList();
 
         // Выводим результат
         polyLines.forEach(System.out::println);

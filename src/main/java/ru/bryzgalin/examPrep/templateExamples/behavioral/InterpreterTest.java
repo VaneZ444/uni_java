@@ -1,4 +1,7 @@
 package ru.bryzgalin.examPrep.templateExamples.behavioral;
+
+import java.util.ArrayList;
+
 /*
 Interpreter — это поведенческий паттерн,
  который позволяет интерпретировать предложения языка или выражения.
@@ -10,7 +13,6 @@ Interpreter — это поведенческий паттерн,
 interface Expression {
     int interpret();
 }
-
 // Конкретное выражение: число
 class Number implements Expression {
     private int value;

@@ -33,7 +33,7 @@ class SportCar implements VisitorCar {
         visitor.visit(this);
     }
 }
-class CarVisitor implements Visitor {
+class  CarVisitor implements Visitor {
     public void visit(SportCar computer) {
         print("car");
     }

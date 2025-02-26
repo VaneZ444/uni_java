@@ -1,47 +1,82 @@
 package ru.bryzgalin.main;
 
+import ru.bryzgalin.mathematical.Line;
 import ru.bryzgalin.mathematical.Point;
+import ru.bryzgalin.misc.Human;
+import ru.bryzgalin.misc.reflections.ReflectionUtils;
+import ru.bryzgalin.misc.reflections.Entity;
+import ru.bryzgalin.misc.reflections.readerWriter.ObjectsReader;
+import ru.bryzgalin.misc.reflections.readerWriter.ObjectsWriter;
+import ru.bryzgalin.misc.reflections.validation.HumanTests;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Files;
-import java.util.Comparator;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import ru.bryzgalin.mathematical.PolyLine;
+
+import static ru.bryzgalin.misc.reflections.validation.ValidationUtils.validate;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("uee\n");
-        File f = new File("points.txt");
-        Scanner scanner = new Scanner(f);
+    public static void main(String[] args) {
+        test4();
+    }
 
-        List<PolyLine> polyLines = Stream.generate(() -> scanner.nextLine())
-                .takeWhile(_ -> scanner.hasNext())
-                .map(str -> str.split(" "))
-                .map(str -> new Point(
-                        Integer.parseInt(str[0]),
-                        Integer.parseInt(str[1]))
-                )
-                .distinct()
-                .sorted(Comparator.comparingInt(Point::getX))
-                .collect(Collectors.groupingBy(Point::getY))//сборка по равной высоте
-                .values() //коллекция списков точек
-                .stream() //обратно в поток
-                .map(PolyLine::new) //каждый список в PolyLine
-                .toList();
+    public static void test1() {
+        Line line1 = Line.of(new Point(1, 1), new Point(2, 2));
+        Line line2 = Line.of(new Point(3, 3), new Point(4, 4));
+        System.out.println(line1);
+        System.out.println(line2);
+        try {
+            ReflectionUtils.lineConnector(line1, line2);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
 
-        polyLines.forEach(System.out::println);
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
 
+        // Выводим результат
+        System.out.println(line1);
+        System.out.println(line2);
+
+    }
+    public static void test2() {
+        class A extends Entity{
+            String s = "Hello";
+            int x=42;
+        }
+        class B extends A{
+            String text = "B";
+        }
+        B b = new B();
+        System.out.println(b);
+    }
+    public static void test3() {
+        ru.bryzgalin.misc.Human h = new ru.bryzgalin.misc.Human("Sergey", 750);
+        System.out.println(h);
+        validate(h, HumanTests.class);
         /*
-        List<PolyLine> polyLines2 = Files.lines(f.toPath())
-                .map(str -> str.split(" "))
-                .map(arr -> new Point(Integer.parseInt(arr[0]),Integer.parseInt(arr[1])))
-                .distinct()
-                .sorted(Comparator.comparingInt(Point::getX))
-                .collect()
-        */
+        Должно вывести Exception in thread "main" ValidateException:
+        ошибка в test5: возраст человека не в диапазоне от 1 до 200
+         */
+    }
+    public static void test4(){
+        List<Human> people = new ArrayList<>();
+        people.add(new Human("sergey 30"));
+        people.add(new Human("oleg 25"));
+
+        try {
+            ObjectsWriter writer = new ObjectsWriter("people.txt");
+            writer.write(people);
+
+            ObjectsReader<Human> reader = new ObjectsReader<>("people.txt", Human.class);
+            List<Human> readPeople = reader.read();
+
+            for (Human human : readPeople) {
+                System.out.println(human);
+            }
+        } catch (IOException | ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
     }
 }

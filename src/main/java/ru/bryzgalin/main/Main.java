@@ -3,22 +3,24 @@ package ru.bryzgalin.main;
 import ru.bryzgalin.mathematical.Line;
 import ru.bryzgalin.mathematical.Point;
 import ru.bryzgalin.misc.Human;
-import ru.bryzgalin.misc.reflections.ReflectionUtils;
-import ru.bryzgalin.misc.reflections.Entity;
-import ru.bryzgalin.misc.reflections.readerWriter.ObjectsReader;
-import ru.bryzgalin.misc.reflections.readerWriter.ObjectsWriter;
-import ru.bryzgalin.misc.reflections.validation.HumanTests;
+import ru.bryzgalin.reflections.ReflectionUtils;
+import ru.bryzgalin.reflections.Entity;
+import ru.bryzgalin.reflections.readerWriter.ObjectsReader;
+import ru.bryzgalin.reflections.readerWriter.ObjectsWriter;
+import ru.bryzgalin.reflections.validation.HumanTests;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.bryzgalin.misc.reflections.validation.ValidationUtils.validate;
+import static ru.bryzgalin.reflections.validation.ValidationUtils.validate;
 
 public class Main {
     public static void main(String[] args) {
-        test4();
+        //test1();
+        //test2();
+        test3();
+        //test4();
     }
 
     public static void test1() {
@@ -54,7 +56,8 @@ public class Main {
     public static void test3() {
         ru.bryzgalin.misc.Human h = new ru.bryzgalin.misc.Human("Sergey", 750);
         System.out.println(h);
-        validate(h, HumanTests.class);
+            validate(h, HumanTests.class);
+
         /*
         Должно вывести Exception in thread "main" ValidateException:
         ошибка в test5: возраст человека не в диапазоне от 1 до 200

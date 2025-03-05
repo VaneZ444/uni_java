@@ -1,4 +1,4 @@
-package ru.bryzgalin.misc.reflections.readerWriter;
+package ru.bryzgalin.reflections.readerWriter;
 
 import java.io.FileWriter;
 import java.io.IOException;

@@ -1,8 +1,8 @@
-package ru.bryzgalin.misc.reflections;
+package ru.bryzgalin.reflections;
 
 import java.lang.reflect.Field;
 import java.util.stream.Collectors;
-import static ru.bryzgalin.misc.reflections.ReflectionUtils.getAllFields;
+import static ru.bryzgalin.reflections.ReflectionUtils.getAllFields;
 
 public abstract class Entity{
     @Override

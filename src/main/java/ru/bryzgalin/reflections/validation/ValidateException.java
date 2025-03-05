@@ -1,4 +1,4 @@
-package ru.bryzgalin.misc.reflections.validation;
+package ru.bryzgalin.reflections.validation;
 
 public class ValidateException extends RuntimeException {
     public ValidateException(String message) {

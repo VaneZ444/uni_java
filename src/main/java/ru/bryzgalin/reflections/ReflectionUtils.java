@@ -1,4 +1,4 @@
-package ru.bryzgalin.misc.reflections;
+package ru.bryzgalin.reflections;
 
 import ru.bryzgalin.mathematical.Line;
 import ru.bryzgalin.mathematical.Point;

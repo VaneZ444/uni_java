@@ -1,7 +1,20 @@
 package ru.bryzgalin.sem1.misc;
 
+import ru.bryzgalin.annotations.Default;
+import ru.bryzgalin.annotations.Invoke;
+import ru.bryzgalin.annotations.ToString;
+import ru.bryzgalin.annotations.Validate;
+import ru.bryzgalin.reflections.validation.CorrectAgeValidate;
+import ru.bryzgalin.reflections.validation.LongNameValidate;
+
+@Validate({CorrectAgeValidate.class, LongNameValidate.class})
+@ToString
 public class Human {
+    @ToString(ToString.ToStringOption.YES)
+    @Default(String.class)
     private String name;
+    @ToString(ToString.ToStringOption.NO)
+    @Default(int.class)
     private int age;
 
     public Human(String name, int age) {
@@ -21,6 +34,10 @@ public class Human {
 
     public String getName() {
         return name;
+    }
+    @Invoke
+    public void greet() {
+        System.out.println("hi im " + this.name);
     }
 
     public int getAge() {

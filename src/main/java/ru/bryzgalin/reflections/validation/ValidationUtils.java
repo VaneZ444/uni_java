@@ -1,6 +1,8 @@
 package ru.bryzgalin.reflections.validation;
 
 import lombok.SneakyThrows;
+import ru.bryzgalin.annotations.Invoke;
+import ru.bryzgalin.annotations.Validate;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -9,6 +11,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ValidationUtils {
+
+    @SneakyThrows
+    public static void validate(Object object) {
+        Class<?> clazz = object.getClass();
+
+        if (clazz.isAnnotationPresent(Validate.class)) {
+            Validate validateAnnotation = clazz.getAnnotation(Validate.class);
+            Class<?>[] validatorClasses = validateAnnotation.value();
+            for (Class<?> validatorClass : validatorClasses) {
+                validate(object, validatorClass);
+            }
+        } else {
+            throw new ValidateException("no validators for class " + clazz.getSimpleName());
+        }
+    }
+
     @SneakyThrows
     public static void validate(Object object, Class<?> testClass) {
 

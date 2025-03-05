@@ -1,5 +1,7 @@
 package ru.bryzgalin.sem1.animals;
 
+import ru.bryzgalin.annotations.Invoke;
+
 public abstract class Bird {
     private String name;
     public Bird(String name){

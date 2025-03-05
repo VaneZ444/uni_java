@@ -1,5 +1,6 @@
 package ru.bryzgalin.sem1.animals;
 
+import ru.bryzgalin.annotations.Invoke;
 import ru.bryzgalin.sem1.interfaces.Meowable;
 
 public class Parrot extends Bird implements Meowable {
@@ -19,6 +20,7 @@ public class Parrot extends Bird implements Meowable {
     }
 
     @Override
+    @Invoke
     public void meow() {
         System.out.println("mreow");
     }

@@ -1,18 +1,41 @@
 package ru.bryzgalin.main;
 
-import ru.bryzgalin.reflections.validation.HumanTests;
+import ru.bryzgalin.annotations.Default;
+import ru.bryzgalin.annotations.Invoke;
+import ru.bryzgalin.reflections.StringUtils;
+import ru.bryzgalin.reflections.validation.ValidationUtils;
 import ru.bryzgalin.sem1.misc.Human;
 
-import static ru.bryzgalin.reflections.validation.ValidationUtils.validate;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class Main {
-    public static void main(String[] args) {
-        test3();
-    }
+    public static void main(String[] args) throws ReflectiveOperationException {
+        Human h = new Human("sergey", 18);
 
-    public static void test3() {
-        Human h = new Human("Sergey", 750);
-        System.out.println(h);
-            validate(h, HumanTests.class);
+        for (Method method : Human.class.getDeclaredMethods()) {
+            if (method.isAnnotationPresent(Invoke.class)) {
+                try {
+                    method.invoke(h);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        for (Field field : h.getClass().getDeclaredFields()) {
+            if (field.isAnnotationPresent(Default.class)) {
+                Default annotation = field.getAnnotation(Default.class);
+                Class<?> type = annotation.value();
+                field.setAccessible(true);
+
+                if (type == String.class) {
+                    field.set(h, "ivan"); // Пустая строка для String
+                } else if (type == Integer.class || type == int.class) {
+                    field.set(h, -20);
+                }
+            }
+        }
+        System.out.println(StringUtils.toString(h));
+        ValidationUtils.validate(h);
     }
 }

@@ -3,6 +3,8 @@ package ru.bryzgalin.reflections.validation;
 import ru.bryzgalin.sem1.misc.Human;
 
 public class HumanTests {
+    public HumanTests() {
+    }
     void testAgeRange(Human human) {
         if (human.getAge() < 1 || human.getAge() > 200) {
             throw new ValidateException("ошибка в testAgeRange: возраст человека не в диапазоне от 1 до 200");

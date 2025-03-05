@@ -1,7 +1,7 @@
 package ru.bryzgalin.reflections;
 
-import ru.bryzgalin.mathematical.Line;
-import ru.bryzgalin.mathematical.Point;
+import ru.bryzgalin.sem1.mathematical.Line;
+import ru.bryzgalin.sem1.mathematical.Point;
 
 import java.lang.reflect.Field;
 import java.util.*;

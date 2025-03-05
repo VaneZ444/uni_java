@@ -1,6 +1,6 @@
 package ru.bryzgalin.reflections.validation;
 
-import ru.bryzgalin.misc.Human;
+import ru.bryzgalin.sem1.misc.Human;
 
 public class HumanTests {
     void testAgeRange(Human human) {

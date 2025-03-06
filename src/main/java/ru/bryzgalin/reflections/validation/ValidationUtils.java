@@ -29,17 +29,15 @@ public class ValidationUtils {
 
     @SneakyThrows
     public static void validate(Object object, Class<?> testClass) {
-
         Constructor<?> constructor = testClass.getDeclaredConstructor();
         constructor.setAccessible(true);
         Object testObj = constructor.newInstance();
-
         List<Method> tests = Arrays.stream(testClass.getDeclaredMethods())
                 .filter(m -> m.getParameterCount() == 1)
                 .filter(m -> m.getParameterTypes()[0].isAssignableFrom(object.getClass()))
                 .peek(m -> m.setAccessible(true))
                 .toList();
-
+        //System.out.println(tests);
         for (Method method : tests) {
             try {
                 method.invoke(testObj, object);

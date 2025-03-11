@@ -2,7 +2,6 @@ package ru.bryzgalin.main;
 
 import ru.bryzgalin.annotations.Default;
 import ru.bryzgalin.annotations.Invoke;
-import ru.bryzgalin.reflections.StringUtils;
 import ru.bryzgalin.reflections.validation.ValidationUtils;
 import ru.bryzgalin.sem1.misc.Human;
 
@@ -22,6 +21,8 @@ public class Main {
                 }
             }
         }
+
+
         for (Field field : h.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Default.class)) {
                 Default annotation = field.getAnnotation(Default.class);
@@ -35,8 +36,7 @@ public class Main {
                 }
             }
         }
-        //System.out.println(StringUtils.toString(h));
-        //System.out.println(h);
+
         ValidationUtils.validate(h);
     }
 }

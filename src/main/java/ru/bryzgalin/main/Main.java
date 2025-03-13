@@ -1,28 +1,17 @@
 package ru.bryzgalin.main;
 
-import ru.bryzgalin.annotations.Default;
-import ru.bryzgalin.annotations.Invoke;
-import ru.bryzgalin.reflections.validation.ValidationUtils;
+import ru.bryzgalin.reflections.ReflectionUtils;
+import ru.bryzgalin.sem1.animals.Parrot;
 import ru.bryzgalin.sem1.misc.Human;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws ReflectiveOperationException {
-        Human h = new Human("sergey", 18);
 
-        for (Method method : Human.class.getDeclaredMethods()) {
-            if (method.isAnnotationPresent(Invoke.class)) {
-                try {
-                    method.invoke(h);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        System.out.println(ReflectionUtils.collect(List.of(Human.class, Parrot.class)));
 
-
+        /*
         for (Field field : h.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Default.class)) {
                 Default annotation = field.getAnnotation(Default.class);
@@ -38,5 +27,7 @@ public class Main {
         }
 
         ValidationUtils.validate(h);
+
+         */
     }
 }

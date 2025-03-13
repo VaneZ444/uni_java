@@ -1,9 +1,7 @@
 package ru.bryzgalin.sem1;
 
 enum EHeight{
-    SHORT(170){
-
-    },MEDIUM(190),TALL(220);
+    SHORT(170),MEDIUM(190),TALL(220);
     private final int height;
     EHeight(int height){
         this.height = height;

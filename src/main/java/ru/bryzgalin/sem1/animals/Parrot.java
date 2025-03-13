@@ -9,9 +9,13 @@ public class Parrot extends Bird implements Meowable {
         super(name);
         this.text = text;
     }
+    public Parrot(){
+        this("Kesh");
+    }
     public Parrot(String name) {
         this(name,"caw-caw");
     }
+    @Invoke
     public String sing() {
         String str = "";
         int strLen = (int) (Math.random() * text.length());
@@ -20,7 +24,6 @@ public class Parrot extends Bird implements Meowable {
     }
 
     @Override
-    @Invoke
     public void meow() {
         System.out.println("mreow");
     }

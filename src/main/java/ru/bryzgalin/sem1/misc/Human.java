@@ -26,8 +26,8 @@ public class Human {
         this.name = parts[0];
         this.age = Integer.parseInt(parts[1]);
     }
-
     @Override
+    @Invoke
     public String toString() {
         return name + " " + age;
     }
@@ -35,6 +35,7 @@ public class Human {
     public String getName() {
         return name;
     }
+
     @Invoke
     public void greet() {
         System.out.println("hi im " + this.name);

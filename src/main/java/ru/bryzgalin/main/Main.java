@@ -11,6 +11,9 @@ public class Main {
 
         System.out.println(ReflectionUtils.collect(List.of(Human.class, Parrot.class)));
 
+
+
+
         /*
         for (Field field : h.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Default.class)) {
@@ -25,9 +28,6 @@ public class Main {
                 }
             }
         }
-
-        ValidationUtils.validate(h);
-
-         */
+        */
     }
 }

@@ -1,5 +1,6 @@
 package ru.bryzgalin.reflections;
 
+import org.junit.jupiter.api.Test;
 import ru.bryzgalin.annotations.Invoke;
 
 import java.util.List;
@@ -9,15 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ReflectionUtilsTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testCollect() {
-        // Подготовка данных для теста
         List<Class<?>> classes = List.of(TestClass1.class, TestClass2.class);
 
-        // Вызов тестируемого метода
         Map<String, Object> result = ReflectionUtils.collect(classes);
 
-        // Проверка результатов
         assertEquals(2, result.size());
         assertTrue(result.containsKey("method1"));
         assertTrue(result.containsKey("method2"));
@@ -25,7 +23,6 @@ class ReflectionUtilsTest {
         assertEquals("value2", result.get("method2"));
     }
 
-    // Пример классов для тестирования
     static class TestClass1 {
         @Invoke
         public String method1() {

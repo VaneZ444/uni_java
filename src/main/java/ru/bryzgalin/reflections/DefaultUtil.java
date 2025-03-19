@@ -22,6 +22,7 @@ public class DefaultUtil {
         JAVA_DEFAULTS.put(float.class,   0.0f);
         JAVA_DEFAULTS.put(double.class,  0.0d);
     }
+
     public static void reset(Object... objects) {
         for (Object obj : objects) {
             Class<?> clazz = obj.getClass();

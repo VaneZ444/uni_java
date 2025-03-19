@@ -31,6 +31,7 @@ public class ReflectionUtils {
         startField.setAccessible(true);
         startField.set(line2, endPoint);
     }
+
     @SneakyThrows
     public static Map<String, Object> collect(List<Class<?>> classes) {
         Map<String, Object> result = new HashMap<>();

@@ -1,39 +1,44 @@
 package ru.bryzgalin.reflections;
 
 import ru.bryzgalin.annotations.Cache;
+import ru.bryzgalin.annotations.Mutator;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class ProxyHandler implements InvocationHandler {
 
-    private Object obj;
+    private final Object obj;
+    private final Map<Method, Object> cacheMap = new HashMap<>();
 
-    private Map<Method, Object> cacheMap = new HashMap<>();
-    private Map<Field, Object> objectState = new HashMap<>();
     public ProxyHandler(Object obj) {
         this.obj = obj;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        //TODO - перегрузки
-        method = obj.getClass().getMethod(method.getName());
-        if (!method.isAnnotationPresent(Cache.class)) {
-            return method.invoke(this.obj, args);
+        Method targetMethod = findMethod(method);
+
+        if (targetMethod.isAnnotationPresent(Mutator.class)) {
+            cacheMap.clear();
+            return targetMethod.invoke(obj, args);
         }
-        //TODO - сброс кэша, учесть аргументы
-        if (!cacheMap.containsKey(method)) {
-            Object obj2 = method.invoke(this.obj, args);
-            cacheMap.put(method, obj2);
-            return obj2;
+
+        if (targetMethod.isAnnotationPresent(Cache.class)) {
+            if (!cacheMap.containsKey(targetMethod)) {
+                Object result = targetMethod.invoke(obj, args);
+                cacheMap.put(targetMethod, result);
+                return result;
+            } else {
+                return cacheMap.get(targetMethod);
+            }
         }
-        return cacheMap.get(method);
+
+        return targetMethod.invoke(obj, args);
+    }
+    private Method findMethod(Method method) throws NoSuchMethodException {
+        return obj.getClass().getMethod(method.getName(), method.getParameterTypes());
     }
 }
-//TODO - решить : аннотация на метод или на класс, mutator

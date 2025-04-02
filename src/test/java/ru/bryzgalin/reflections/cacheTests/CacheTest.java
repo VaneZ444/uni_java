@@ -34,7 +34,7 @@ public class CacheTest {
 
         @Cache
         public String getData() {
-            return "data-" + (++getDataCallsCount);
+            return "calls-" + (++getDataCallsCount);
         }
 
         @Mutator
@@ -48,7 +48,7 @@ public class CacheTest {
 
         @Cache
         public String getDataWithParam(String param) {
-            return "param-data-" + (++dataWithParamCallsCount) + "-" + param;
+            return "param-calls-" + (++dataWithParamCallsCount) + "-" + param;
         }
     }
 
@@ -79,14 +79,13 @@ public class CacheTest {
     @DisplayName("Кэширование методов с аннотацией @Cache")
     void shouldCacheAnnotatedMethods() {
         String first = proxy.getData();
-        assertEquals("data-1", first);
+        assertEquals("calls-1", first);
         assertEquals(1, realService.getDataCallsCount);
 
         String second = proxy.getData();
-        assertEquals("data-1", second);
+        assertEquals("calls-1", second);
         assertEquals(1, realService.getDataCallsCount);
     }
-
     @Test
     @DisplayName("Сброс кэша после вызова метода с аннотацией @Mutator")
     void shouldInvalidateCacheAfterMutator() {
@@ -94,7 +93,7 @@ public class CacheTest {
         proxy.updateData();
         String afterMutator = proxy.getData();
 
-        assertEquals("data-2", afterMutator);
+        assertEquals("calls-2", afterMutator);
         assertEquals(2, realService.getDataCallsCount);
     }
 
@@ -126,11 +125,11 @@ public class CacheTest {
         String param1 = proxy.getDataWithParam("test");
         String param2 = proxy.getDataWithParam("another");
 
-        assertEquals("param-data-1-test", param1);
-        assertEquals("param-data-1-test", param2);
+        assertEquals("param-calls-1-test", param1);
+        assertEquals("param-calls-1-test", param2);
         assertEquals(1, realService.dataWithParamCallsCount);
     }
-
+    
     @Test
     @DisplayName("Сброс всех кэшей после любого мутатора")
     void shouldResetAllCachesAfterAnyMutator() {

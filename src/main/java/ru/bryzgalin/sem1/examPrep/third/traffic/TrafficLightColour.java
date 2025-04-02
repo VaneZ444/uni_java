@@ -1,10 +1,19 @@
 package ru.bryzgalin.sem1.examPrep.third.traffic;
 
+import ru.bryzgalin.sem1.examPrep.third.traffic.TLColour;
+
 public class TrafficLightColour implements TLColour {
-    public String colour;
-    public TLColour nextColour;
-    public TrafficLightColour(String colour){
+    private String colour;
+    private TLColour nextColour;
+
+    public TrafficLightColour() {}
+
+    public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    public void setNextColour(TLColour nextColour) {
+        this.nextColour = nextColour;
     }
 
     @Override

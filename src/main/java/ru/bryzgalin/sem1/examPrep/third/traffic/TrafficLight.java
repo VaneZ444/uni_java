@@ -1,27 +1,24 @@
 package ru.bryzgalin.sem1.examPrep.third.traffic;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class TrafficLight {
-    public TLColour curColour;
+    private TLColour currentColour;
+
+    @Autowired
+    public TrafficLight(@Qualifier("red") TLColour redColour) {
+        this.currentColour = redColour;
+    }
 
     public void next() {
-        System.out.println(curColour.get());
-        curColour = curColour.next();
+        System.out.println(currentColour.get());
+        currentColour = currentColour.next();
+    }
+
+    public String getCurrentColor() {
+        return currentColour.get();
     }
 }
-/*
-* TrafficLight tf = new TrafficLight();
-        TrafficLightColour red = new TrafficLightColour("red");
-        TrafficLightColour yellowToGreen = new TrafficLightColour("yellow");
-        TrafficLightColour green = new TrafficLightColour("green");
-        TrafficLightColour yellowToRed = new TrafficLightColour("yellow");
-        red.nextColour = yellowToGreen;
-        yellowToGreen.nextColour = green;
-        green.nextColour = yellowToRed;
-        yellowToRed.nextColour = red;
-        tf.curColour = green;
-        tf.next();
-        tf.next();
-        tf.next();
-        tf.next();
-        tf.next();
-        * */

@@ -1,11 +1,12 @@
 package ru.bryzgalin.main;
 
-import ru.bryzgalin.annotations.Cache;
-import ru.bryzgalin.annotations.Mutator;
-import ru.bryzgalin.reflections.CacheProxyCreator;
-import ru.bryzgalin.reflections.validation.ExampleInterface;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.bryzgalin.postProcessors.TestBean;
 
 public class Main {
     public static void main(String[] args) throws ReflectiveOperationException {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("ru.bryzgalin");
+        TestBean beanWithName = context.getBean(TestBean.class);
+        System.out.println("TestBeanWithName.name: " + beanWithName.getName());
     }
 }

@@ -11,10 +11,8 @@ import ru.bryzgalin.reflections.validation.LongNameValidate;
 @ToString
 public class Human {
     @ToString(ToString.ToStringOption.YES)
-    @Default(String.class)
     private String name;
     @ToString(ToString.ToStringOption.NO)
-    @Default(int.class)
     private int age;
 
     public Human(String name, int age) {

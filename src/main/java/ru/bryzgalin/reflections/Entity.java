@@ -9,7 +9,7 @@ public abstract class Entity{
     public String toString() {
         return "Entity{" +
                 getAllFields(this.getClass()).stream()
-                        .filter(this.getClass().isAnnotationPresent())
+                        //.filter(this.getClass().isAnnotationPresent()) //TODO: fix this also
                         .map(this::getFieldView)
                         .collect(Collectors.joining(", "))
                 + "}";

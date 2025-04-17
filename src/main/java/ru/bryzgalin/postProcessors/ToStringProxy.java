@@ -15,7 +15,7 @@ public class ToStringProxy {
     }
     @Override
     public String toString() {
-        return ;
+        return null; //TODO: fix this
     }
     private static Set<Field> getAllFields(Class<?> cls) {
         if (cls.equals(Object.class)) return Set.of();

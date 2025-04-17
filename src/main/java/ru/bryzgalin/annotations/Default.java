@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
 public @interface Default {
-    String value() default ""; // имя бина-значения по умолчанию
+    String value() default "";
 }

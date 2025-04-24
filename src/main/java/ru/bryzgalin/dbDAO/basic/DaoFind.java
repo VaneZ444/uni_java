@@ -2,7 +2,8 @@ package ru.bryzgalin.dbDAO.basic;
 
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
-import ru.bryzgalin.dbDAO.exceptions.FieldSetException;
+import ru.bryzgalin.dbDAO.shared.Column;
+import ru.bryzgalin.dbDAO.shared.FieldSetException;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

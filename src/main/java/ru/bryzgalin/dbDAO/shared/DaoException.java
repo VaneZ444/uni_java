@@ -1,4 +1,4 @@
-package ru.bryzgalin.dbDAO.exceptions;
+package ru.bryzgalin.dbDAO.shared;
 
 public class DaoException extends RuntimeException {
   public DaoException(String message) {

@@ -1,4 +1,4 @@
-package ru.bryzgalin.dbDAO.exceptions;
+package ru.bryzgalin.dbDAO.shared;
 
 public class QueryBuildException extends DaoException {
     public QueryBuildException(String message) {
